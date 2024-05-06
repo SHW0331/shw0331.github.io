@@ -182,7 +182,7 @@ python.version = python3
 ```
 ![](../../assets/images/query.png)
 
-## Step7: Dashboard 생성
+## Step6: Dashboard 생성
 - 해당 앱의 인터페이스에서 **"대시보드"**를 선택
 - **"새 대시보드 만들기"**를 클릭하여 생성 후, **"클래식 대시보드"** 선택
 ![](../../assets/images/dashboard.png)
