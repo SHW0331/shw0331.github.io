@@ -31,14 +31,15 @@ nav_order: 1
 }
 ```
 
+<br>
 - Array : 값들의 목록으로 표현
 {: .no_toc}
 
 ```json
 ["Python","C++","Javascript"]
 ```
-<br>
 
+<br>
 - String : 텍스트 데이터 
 {: .no_toc}
 
