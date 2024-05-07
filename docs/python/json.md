@@ -30,7 +30,6 @@ nav_order: 1
     "age": 27,
 }
 ```
-
 <br>
 - Array : 값들의 목록으로 표현
 {: .no_toc}
@@ -38,15 +37,13 @@ nav_order: 1
 ```json
 ["Python","C++","Javascript"]
 ```
-
 <br>
 - String : 텍스트 데이터 
 {: .no_toc}
 
 ```json
 "Test JSON (String)"
-``` 
-
+```
 <br>
 - Number : 숫자를 나타냄
 {: .no_toc}
@@ -54,7 +51,6 @@ nav_order: 1
 ```json
 1234567890
 ```
-
 <br>
 - Boolean : True 또는 False 값을 나타냄
 {: .no_toc}
@@ -62,7 +58,6 @@ nav_order: 1
 ```json
 true
 ```
-
 <br>
 - null : 아무런 값도 나타내지 않음
 {: .no_toc}
@@ -107,10 +102,15 @@ def json_loads(data):
 ```py
 def json_dump(data, path):
     with open(path, "w") as json_file:
-        json.dumps(data, json_file)
+        json.dump(data, json_file)
 ```
 
+## json_load
+- JSON 파일을 Python 객체로 역직렬화
 
+```py 
+
+```
 
 
 
