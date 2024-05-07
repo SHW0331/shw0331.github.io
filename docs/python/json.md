@@ -37,14 +37,16 @@ nav_order: 1
 ```json
 ["Python","C++","Javascript"]
 ```
+<br>
 
 - String : 텍스트 데이터 
 {: .no_toc}
 
 ```json
 "Test JSON (String)"
-```   
+``` 
 
+<br>
 - Number : 숫자를 나타냄
 {: .no_toc}
 
@@ -52,6 +54,7 @@ nav_order: 1
 1234567890
 ```
 
+<br>
 - Boolean : True 또는 False 값을 나타냄
 {: .no_toc}
 
@@ -59,12 +62,13 @@ nav_order: 1
 true
 ```
 
-### null : 아무런 값도 나타내지 않음
+<br>
+- null : 아무런 값도 나타내지 않음
 {: .no_toc}
+
 ```json
 null
 ```
-
 
 ---
 
