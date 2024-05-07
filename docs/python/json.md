@@ -34,10 +34,10 @@ nav_order: 1
 ["Python","C++","Javascript"]
 ```
 
-- String : 텍스트 데이터
+- String : 텍스트 데이터 
 ```json
 "Test JSON (String)"
-```
+```   
 
 - Number : 숫자를 나타냄
 ```json
@@ -58,15 +58,19 @@ null
 ## Python JSON
 {: .no_toc }
 
-2. TOC
-{:toc}
-
-# import
+## import
 - JSON 모듈을 사용하기 위해 json 내장 모듈을 import
 ```py
 import json
 ```
-# 
+
+## json_loads
+- Python에서 정의된 json 형식 데이터는 json.loads 사용 불가
+- json.dumps 함수를 사용하여 json 데이터 객체로 변환 후 사용 가능
+
+
+## json_dumps
+- Python 객체를 JSON 형식의 문자열로 변환
 
 
 
