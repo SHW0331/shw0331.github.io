@@ -84,8 +84,9 @@ def json_dumps(data):
 ## json_loads
 - JSON 형식의 문자열을 Python 객체로 변환
 {: .warning }
-> Python에서 정의된 json 형식 데이터는 json.loads 사용 불가
-> json.dumps 함수를 사용하여 json 데이터 객체로 변환 후 사용 가능
+> Python에서 정의된 json 형식 데이터는 json.loads 사용 불가   
+> json.dumps 함수를 사용하여 json 데이터 객체로 변환 후 사용 가능   
+
 ```py
 def json_loads(data):
     data_loads = json.loads(data)
