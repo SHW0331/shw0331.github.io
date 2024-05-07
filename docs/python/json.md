@@ -93,7 +93,7 @@ def json_dumps(data):
 ```py
 def json_loads(data):
     data_loads = json.loads(data)
-    data_loads['content'] = "json loads Test"
+    return data_loads
 ```
 
 ## json_dump
@@ -103,17 +103,39 @@ def json_loads(data):
 def json_dump(data, path):
     with open(path, "w") as json_file:
         json.dump(data, json_file)
+        return
 ```
 
 ## json_load
 - JSON 파일을 Python 객체로 역직렬화
 
 ```py 
-
+def json_load(path):
+    with open(path, "r") as json_file:
+        data_load = json.load(json_file)
+        return data_load
 ```
 
+## json_indent
+- JSON 데이터 들여쓰기 --> 가독성
 
+```py
+def json_indent(data):
+    data = json.dumps(data, indent=4)
+    return data
+```
+
+## json_sort_keys
+- JSON 데이터 Key 정렬
+```py
+def json_sort_keys(data):
+    data = json.dumps(data, sort_keys=True) # Key sort True
+    data = json.dumps(data, sort_keys=False) # Key sort False
+    return data
+```
+
+## json_skipkeys
+- JSON 데이터의 key가 문자열이 아닌 경우, 무시처리
 
 ---
-
 [python json docs]: https://docs.python.org/ko/3/library/json.html
