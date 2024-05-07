@@ -127,7 +127,7 @@ def lookup(cve):
         response = requests.get(search_url, headers=headers)
         data_req = response.text
 
-        # NVD data를 json 형식으로 변환
+        # NVD data를 json 형식으로 load
         json_data = json.loads(data_req)
 
         # NVD json data에서 field 값 저장
