@@ -21,7 +21,8 @@ nav_order: 1
 **"JSON(JavaScript Object Notation)"**은 데이터를 저장하고 전송하기 위한 경량의 데이터 형식으로, 텍스트 기반의 구조화된 데이터를 표현하는데 사용
 
 ## JSON 유형
-- Object : Key-Value 쌍의 집합으로 표현
+#### Object : Key-Value 쌍의 집합으로 표현
+{: .no_toc}
 ```json
 {
     "name": "shw",
@@ -29,22 +30,26 @@ nav_order: 1
 }
 ```
 
-- Array : 값들의 목록으로 표현
+#### Array : 값들의 목록으로 표현
+{: .no_toc}
 ```json
 ["Python","C++","Javascript"]
 ```
 
-- String : 텍스트 데이터 
+#### String : 텍스트 데이터 
+{: .no_toc}
 ```json
 "Test JSON (String)"
 ```   
 
-- Number : 숫자를 나타냄
+#### Number : 숫자를 나타냄
+{: .no_toc}
 ```json
 1234567890
 ```
 
-- Boolean : True 또는 False 값을 나타냄
+#### Boolean : True 또는 False 값을 나타냄
+{: .no_toc}
 ```json
 true
 ```
@@ -55,8 +60,6 @@ null
 ```
 
 ---
-## Python JSON
-{: .no_toc }
 
 ## import
 - JSON 모듈을 사용하기 위해 json 내장 모듈을 import
