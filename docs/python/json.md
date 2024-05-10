@@ -104,6 +104,13 @@ def json_load(path):
 def json_indent(data):
     data_indent = json.dumps(data, indent=4)
     return data_indent
+
+# ident False : {"name":"SHW0331","age":30}
+# ident True : 
+{
+    "name":"SHW0331"
+    "age":27
+}
 ```
 
 ## json_sort_keys
