@@ -21,51 +21,32 @@ nav_order: 1
 **"JSON(JavaScript Object Notation)"**은 데이터를 저장하고 전송하기 위한 경량의 데이터 형식으로, 텍스트 기반의 구조화된 데이터를 표현하는데 사용
 
 ## JSON 유형
-- Object : Key-Value 쌍의 집합으로 표현
+- 
 {: .no_toc}
 
-```json
+```py
+# Object : Key-Value 쌍의 집합으로 표현
 {
     "name": "shw",
     "age": 27,
 }
-```
-<br>
-- Array : 값들의 목록으로 표현
-{: .no_toc}
 
-```json
+# Array : 값들의 목록으로 표현
 ["Python","C++","Javascript"]
-```
-<br>
-- String : 텍스트 데이터 
-{: .no_toc}
 
-```json
+# String : 텍스트 데이터 
 "Test JSON (String)"
-```
-<br>
-- Number : 숫자를 나타냄
-{: .no_toc}
 
-```json
+# Number : 숫자를 나타냄
 1234567890
-```
-<br>
-- Boolean : True 또는 False 값을 나타냄
-{: .no_toc}
 
-```json
-true
-```
-<br>
-- null : 아무런 값도 나타내지 않음
-{: .no_toc}
+# Boolean : True 또는 False 값을 나타냄
+True
+False
 
-```json
+# null : 아무런 값도 나타내지 않음
 null
 ```
-
 ---
 
 ## import
@@ -132,15 +113,25 @@ def json_sort_keys(data):
     data_sort = json.dumps(data, sort_keys=True) # Key sort True
     data_sort = json.dumps(data, sort_keys=False) # Key sort False
     return data_sort
+
+# key sort True : {"a": 1, "b": 2, "c": 3}
+# key sort False : {"b": 2, "a": 1, "c": 3}
 ```
 
 ## json_skipkeys
 - JSON 데이터의 key가 문자열이 아닌 경우, 무시처리
 ```py
 def json_skipkeys(data):
-    data_skip = json.dumps(data, skipkeys=True)
-    data_skip = json.dumps(data, skipkeys=False)
-    return data_skip
+    data_skipkeys = json.dumps(data, skipkeys=True)
+    try:
+        data_skipkeys = json.dumps(data, skipkeys=False)
+        print("skipkeys False " + data_skipkeys)
+    except Exception as e:
+        print("skipkeys False : ", e)
+    return data_skipkeys
+
+# skipkeys True {"key2": "value"}
+# skipkeys False :  keys must be str, int, float, bool or None, not tuple 
 ```
 
 ## json_ensure_ascii
@@ -150,6 +141,9 @@ def json_ensure_ascii(data):
     data_ascii = json.dumps(data, ensure_ascii=True)
     data_ascii = json.dumps(data, ensure_ascii=False)
     return data_ascii
+
+# ensure ascii True : {"name": "\uc11c\u314e\u3150\uc6d0", "age": 27}
+# ensure ascii False : {"name": "서ㅎㅐ원", "age": 27}
 ```
 
 ## json_check_circular
@@ -160,6 +154,9 @@ def json_check_circular(data):
     data_circular = json.dumps(data, check_circular=True)
     data_circular = json.dumps(data, check_circular=False)
     return data_circular
+
+# check circular True :  Circular reference detected
+# check circular False:  maximum recursion depth exceeded while encoding a JSON object
 ```
 
 ## json_allow_nan
@@ -169,6 +166,9 @@ def json_allow_nan(data):
     data_nan = json.dumps(data, allow_nan=True)
     data_nan = json.dumps(data, allow_nan=False)
     return data_nan
+
+# allow nan True : {"value": NaN}
+# allow nan False :  Out of range float values are not JSON compliant
 ```
 
 ## json_separators
@@ -177,6 +177,8 @@ def json_allow_nan(data):
 def json_separators(data):
     data_separators = json.dumps(data, separators=(" \ ", "="))
     return data_separators
+
+# {"name"="shw" \ "age"=27}
 ```
 ---
 [python json docs]: https://docs.python.org/ko/3/library/json.html
