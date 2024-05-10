@@ -121,21 +121,62 @@ def json_load(path):
 
 ```py
 def json_indent(data):
-    data = json.dumps(data, indent=4)
-    return data
+    data_indent = json.dumps(data, indent=4)
+    return data_indent
 ```
 
 ## json_sort_keys
 - JSON 데이터 Key 정렬
 ```py
 def json_sort_keys(data):
-    data = json.dumps(data, sort_keys=True) # Key sort True
-    data = json.dumps(data, sort_keys=False) # Key sort False
-    return data
+    data_sort = json.dumps(data, sort_keys=True) # Key sort True
+    data_sort = json.dumps(data, sort_keys=False) # Key sort False
+    return data_sort
 ```
 
 ## json_skipkeys
 - JSON 데이터의 key가 문자열이 아닌 경우, 무시처리
+```py
+def json_skipkeys(data):
+    data_skip = json.dumps(data, skipkeys=True)
+    data_skip = json.dumps(data, skipkeys=False)
+    return data_skip
+```
 
+## json_ensure_ascii
+- JSON 데이터에서 ASCII 문자 이외의 문자들을 모두 이스케이프(escape) 처리할지 여부를 결정
+```py
+def json_ensure_ascii(data):
+    data_ascii = json.dumps(data, ensure_ascii=True)
+    data_ascii = json.dumps(data, ensure_ascii=False)
+    return data_ascii
+```
+
+## json_check_circular
+- JSON 데이이터의 순환 참조를 확인하여 데이터를 반환
+- 순환 참조는 객체 간에 서로를 참조
+```py
+def json_check_circular(data):
+    data_circular = json.dumps(data, check_circular=True)
+    data_circular = json.dumps(data, check_circular=False)
+    return data_circular
+```
+
+## json_allow_nan
+- JSON 데이터의 NaN(Not a Number) 값을 허용할지 여부를 설정
+```py
+def json_allow_nan(data):
+    data_nan = json.dumps(data, allow_nan=True)
+    data_nan = json.dumps(data, allow_nan=False)
+    return data_nan
+```
+
+## json_separators
+- JSON 데이터의 기본 구분자를 변경
+```py
+def json_separators(data):
+    data_separators = json.dumps(data, separators=(" \ ", "="))
+    return data_separators
+```
 ---
 [python json docs]: https://docs.python.org/ko/3/library/json.html
