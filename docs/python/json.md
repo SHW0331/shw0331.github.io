@@ -108,6 +108,7 @@ def json_indent(data):
 
 ## json_sort_keys
 - JSON 데이터 Key 정렬
+
 ```py
 def json_sort_keys(data):
     data_sort = json.dumps(data, sort_keys=True) # Key sort True
@@ -120,6 +121,7 @@ def json_sort_keys(data):
 
 ## json_skipkeys
 - JSON 데이터의 key가 문자열이 아닌 경우, 무시처리
+
 ```py
 def json_skipkeys(data):
     data_skipkeys = json.dumps(data, skipkeys=True)
@@ -136,6 +138,7 @@ def json_skipkeys(data):
 
 ## json_ensure_ascii
 - JSON 데이터에서 ASCII 문자 이외의 문자들을 모두 이스케이프(escape) 처리할지 여부를 결정
+
 ```py
 def json_ensure_ascii(data):
     data_ascii = json.dumps(data, ensure_ascii=True)
@@ -149,6 +152,7 @@ def json_ensure_ascii(data):
 ## json_check_circular
 - JSON 데이이터의 순환 참조를 확인하여 데이터를 반환
 - 순환 참조는 객체 간에 서로를 참조
+
 ```py
 def json_check_circular(data):
     data_circular = json.dumps(data, check_circular=True)
@@ -161,6 +165,7 @@ def json_check_circular(data):
 
 ## json_allow_nan
 - JSON 데이터의 NaN(Not a Number) 값을 허용할지 여부를 설정
+
 ```py
 def json_allow_nan(data):
     data_nan = json.dumps(data, allow_nan=True)
@@ -173,6 +178,7 @@ def json_allow_nan(data):
 
 ## json_separators
 - JSON 데이터의 기본 구분자를 변경
+
 ```py
 def json_separators(data):
     data_separators = json.dumps(data, separators=(" \ ", "="))
