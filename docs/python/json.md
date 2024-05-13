@@ -8,13 +8,14 @@ nav_order: 1
 # JSON
 {: .no_toc}
 
-본 문서는 python docs 공식 문서를 참고하여 작성되었습니다.
+본 문서는 python docs 참고하여 작성되었습니다.
 {: .fs-6 .fw-300 }
 
 [json Docs][python json docs]{: .btn .fs-5 .mb-4. mb-md-0 }
 
 1. TOC
 {:toc}
+
 ---
 
 ## JSON 정의
