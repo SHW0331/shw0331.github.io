@@ -30,12 +30,31 @@ permalink: /docs/reverse
 소프트웨어의 동작을 분석하여 원래의 소스 코드나 구조를 추론하는 과정
 
 ## Reversing Tools
-- Debuging Tools : 바이너리 파일을 어셈블리어로 재구성
+- Debugging Tools : 바이너리 파일을 어셈블리어로 재구성
     - Ollydbg
-    - Ida PRO
+    - IDA PRO
     - Immunity Debugger
     - Windbg
 
+- Static Tools
+    - Detour
+    - Exeinfo, PEID
+    - PEView, Stud_PE, loadPE
+    - Strings, Bintext
+
+- Dynamic Tools
+    - Autoruns
+    - ProcessMonitor
+    - ProcessExplorer
+    - HijackThis
+    - Wireshark
+
+- Other Useful Tools
+    - Reflector
+    - FFDec, Sothink, RABCD ASM
+    - DeDe
+    - 010 Editor, Notepad++
+    - Cheat Engine
 
 ---
 

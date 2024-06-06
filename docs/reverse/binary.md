@@ -2,6 +2,6 @@
 layout: default
 title: binary
 parent: reverse
-nav_order: 2
+nav_order: 3
 ---
 
