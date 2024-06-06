@@ -18,7 +18,7 @@ Reverse Engineering 기술
 
 [Computer Science][Splunk lookup search Docs]{: .btn .fs-5 .mb-4 .mb-md-0 }
 [Binary Code][Splunk external lookup Docs]{: .btn .fs-5 .mb-4 .mb-md-0 }
-[Program Language][]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[Program Language][Splunk external lookup Docs]{: .btn .fs-5 .mb-4 .mb-md-0 }
 
 1. TOC
 {:toc}
