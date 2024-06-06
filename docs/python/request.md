@@ -18,8 +18,8 @@ nav_order: 2
 
 ---
 
-
-
+{: .warning}
+> $ python -m pip install requests
 
 ---
 [python request docs]: https://requests.readthedocs.io/en/latest/
