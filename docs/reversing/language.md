@@ -1,7 +1,7 @@
 ---
 layout: default
 title: language
-parent: reverse
+parent: reversing
 nav_order: 4
 ---
 
