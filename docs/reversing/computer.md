@@ -1,7 +1,7 @@
 ---
 layout: default
 title: computer
-parent: reverse
+parent: reversing
 nav_order: 1
 ---
 

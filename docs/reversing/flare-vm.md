@@ -1,7 +1,7 @@
 ---
 layout: default
 title: flare-vm
-parent: reverse
+parent: reversing
 nav_order: 5
 ---
 

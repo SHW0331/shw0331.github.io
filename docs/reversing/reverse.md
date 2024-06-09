@@ -1,9 +1,9 @@
 ---
 layout: default
-title: reverse
+title: reversing
 nav_order: 3
 has_children: true
-permalink: /docs/reverse
+permalink: /docs/reversing
 ---
 
 # Reverse Engineering
