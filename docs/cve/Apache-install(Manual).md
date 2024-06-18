@@ -1,9 +1,4 @@
----
-layout: default
-title: Apache-install(Manual)
-parent: cve
-nav_order: 1
----
+
 
 # Apache install
 Apache 2.4.58v 수동 설치
@@ -29,6 +24,13 @@ export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 export CPPFLAGS="-I/usr/local/include"
 export LDFLAGS="-L/usr/local/lib"
 
+## Apache 2.4.58 다운로드
+cd /usr/local/src
+wget https://archive.apache.org/dist/httpd/httpd-2.4.58.tar.gz
+tar -xvf httpd-2.4.58.tar.gz
+cd httpd-2.4.58
+
+
 ## APR 모듈 다운로드
 cd /usr/local/src
 wget https://dlcdn.apache.org//apr/apr-1.7.4.tar.gz
@@ -45,17 +47,12 @@ tar -xzvf nghttp2-1.47.0.tar.gz
 cd nghttp2-1.47.0
 ./configure
 make
-sudo make install
-
-## Apache 2.4.58 다운로드
-cd /usr/local/src
-wget https://archive.apache.org/dist/httpd/httpd-2.4.58.tar.gz
-tar -xvf httpd-2.4.58.tar.gz
-cd httpd-2.4.58
+make install
+<!-- mv nghttp2-1.47.0 /usr/local/src/httpd-2.4.58/srclib/nghttp2 -->
 
 ## Apache 컴파일 및 설치
 cd /usr/local/src/httpd-2.4.58
-./configure --enable-so --enable-ssl --with-ssl --enable-http2 --with-included-apr --with-mpm=event --with-pcre --with-nghttp2=/usr/local/lib
+./configure --enable-so --enable-ssl --with-ssl --enable-http2 --with-included-apr --with-mpm=event --with-pcre --with-included-nghttp2
 make
 make install
 
@@ -131,13 +128,13 @@ nmap -p 443 your_server_ip
 ## 확인
 sudo /usr/local/apache2/bin/apachectl configtest
 
-<!-- ## ssl 인증서 (localhost SSL 인증서)
+## ssl 인증서 (localhost SSL 인증서)
 mkdir /usr/local/apache2/ssl
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /usr/local/apache2/ssl/localhost.key -out /usr/local/apache2/ssl/localhost.crt
 
 vi /usr/local/apache2/conf/extra/httpd-ssl.conf
 SSLCertificateFile "/usr/local/apache2/ssl/localhost.crt"
-SSLCertificateKeyFile "/usr/local/apache2/ssl/localhost.key" -->
+SSLCertificateKeyFile "/usr/local/apache2/ssl/localhost.key"
 
 ## port forwarding
 80, 443 open
