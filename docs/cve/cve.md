@@ -1,9 +1,9 @@
 ---
 layout: default
-title: python
+title: cve
 nav_order: 4
 has_children: true
-permalink: /docs/python
+permalink: /docs/cve
 ---
 
 # CVE
