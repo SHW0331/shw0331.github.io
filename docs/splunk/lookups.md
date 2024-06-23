@@ -11,8 +11,8 @@ nav_order: 1
 Splunk의 공식 문서를 참고하여 작성되었습니다.
 {: .fs-6 .fw-300 }
 
-[lookup Docs][Splunk lookup search Docs]{: .btn .fs-5 .mb-4 .mb-md-0 }
-[external lookup Docs][Splunk external lookup Docs]{: .btn .fs-5 .mb-4 .mb-md-0 }
+[lookup Docs][Splunk lookup search Docs]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
+[external lookup Docs][Splunk external lookup Docs]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
 
 1. TOC
 {:toc}
