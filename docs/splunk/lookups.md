@@ -44,12 +44,12 @@ Python Script를 사용하여 데이터를 수집하고, external lookup 기능�
 ## Step1: Splunk App 생성
 - Splunk에서 앱을 생성하기 위해 Splunk 인터페이스에서 **"앱"**을 선택
 - **"앱 만들기"**를 클릭하여 앱을 생성
-![](../../assets/images/create_app.png)
+![](../../assets/images/splunk_lookup/create_app.png)
 
 ## Step2: App 권한 설정
 - Python Script를 실행하기 위해 해당 앱에 대한 권한을 설정
 - 모든 사용자 읽기, 쓰기 권한 부여
-![](../../assets/images/access.png)
+![](../../assets/images/splunk_lookup/access.png)
 
 ## Step3: Python Script 생성
 - NVD API 공식 문서를 참고하였습니다.
@@ -181,12 +181,12 @@ python.version = python3
 | lookup nvd cve
 | fields cve, baseScore, descriptions, published, weaknesses
 ```
-![](../../assets/images/query.png)
+![](../../assets/images/splunk_lookup/query.png)
 
 ## Step6: Dashboard 생성
 - 해당 앱의 인터페이스에서 **"대시보드"**를 선택
 - **"새 대시보드 만들기"**를 클릭하여 생성 후, **"클래식 대시보드"** 선택
-![](../../assets/images/dashboard.png)
+![](../../assets/images/splunk_lookup/dashboard.png)
 
 ### 대시보드 편집 (원본)
 {: .no_toc }
@@ -226,7 +226,7 @@ python.version = python3
   </row>
 </form>
 ```
-![](../../assets/images/result.png)
+![](../../assets/images/splunk_lookup/result.png)
 
 ---
 [Splunk lookup search Docs]: https://dev.splunk.com/enterprise/search/?q=lookup
