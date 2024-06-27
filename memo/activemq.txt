@@ -1,0 +1,48 @@
+    <bean id="jettyPort" class="org.apache.activemq.web.WebConsolePort" init-method="start">
+             <!-- the default port number for the web console -->
+        <property name="host" value="127.0.0.1"/>
+        <property name="port" value="8161"/>
+    </bean>
+
+
+    <bean id="Server" depends-on="jettyPort" class="org.eclipse.jetty.server.Server"
+        destroy-method="stop">
+
+        <property name="handler">
+            <bean id="handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+                <property name="handlers">
+                    <list>
+                        <ref bean="contexts" />
+                        <ref bean="securityHandler" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+
+    <bean id="Server" class="org.eclipse.jetty.server.Server" destroy-method="stop">
+        <property name="connectors">
+            <list>
+                <bean class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+                    <property name="host" value="0.0.0.0"/>
+                    <property name="port" value="8161"/>
+                    <property name="maxIdleTime" value="300000"/>
+                    <property name="soLingerTime" value="-1"/>
+                </bean>
+            </list>
+        </property>
+        <property name="handler">
+            <bean id="handlers" class="org.eclipse.jetty.server.handler.HandlerCollection">
+                <property name="handlers">
+                    <list>
+                        <ref bean="contexts" />
+                        <ref bean="securityHandler" />
+                    </list>
+                </property>
+            </bean>
+        </property>
+    </bean>
