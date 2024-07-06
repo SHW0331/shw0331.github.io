@@ -22,6 +22,16 @@ permalink: /docs/cve
 
 ---
 
+## OpenSSH CVE
+{% assign openssh_docs = site.pages | where: "category", "OpenSSH" | sort: "title" %}
+<ul>
+  {% for doc in openssh_docs %}
+    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+  {% endfor %}
+</ul>
+
+---
+
 ## Etc CVE
 {% assign apache_docs = site.pages | where: "category", "Etc" | sort: "title" %}
 <ul>
