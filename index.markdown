@@ -15,7 +15,6 @@ permalink: /
 CVE, Python, Splunk...
 {: .fs-4 .fw-300 }
 
-Github
 [Github][Github]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
 
 ---
