@@ -15,6 +15,9 @@ permalink: /
 CVE, Python, Splunk...
 {: .fs-4 .fw-300 }
 
+Github
+[Github][Github]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
+
 ---
 
 ## CVE
@@ -45,3 +48,5 @@ Splunk 섹션에서는 Splunk의 강력한 데이터 분석 및 시각화 기능
 - 대시보드 및 시각화 : 보고서 생성, 시각화 도구 사용
 
 --- 
+
+[Github]: https://github.com/SHW0331
