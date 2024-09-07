@@ -40,17 +40,13 @@ int _tmain(int argc, TCHAR* argv[])
 > **OllyDbg**는 Windows 환경에서 동작하는 **디버거(Debugger)**로, 주로 어셈블리 언어 수준에서 프로그램의 실행을 분석하는 데 사용
 > [OllyDbg](https://www.ollydbg.de/)
 
-- EP : 디버거가 멈춘 곳은 EP(EntryPoint) 코드로, HelloWorld.exe의 실행 시작 주소
+- 디버거가 멈춘 곳은 EP(EntryPoint) 코드로, HelloWorld.exe의 실행 시작 주소
 - 시작 주소는 **7FFA_399AC087**, JMP, SHORT 명령어가 존재
+
 
 ![](../../assets/images/reversing/HelloWorld/2.png)
 
 - 실행 파일을 디버깅(Debugging)하여 어셈블리 언어로 변환 된 main() 함수 찾기
 
 
-## 1.3 공격 원리
-- Apache OFBiz의 웹 애플리케이션에서 엔드포인트를 스캔하여 취약한 엔드포인트 식별
-- 취약한 엔드포인트를 통해 접근한 공격자는 관련된 화면 정의 파일에 접근
-- 화면 정의 파일에 포함된 화면 렌더링 코드를 악용하여 임의의 악성 코드를 실행
-![](../../assets/images/cve-2024-27316/attack.png)
 ---
