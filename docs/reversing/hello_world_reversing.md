@@ -3,7 +3,6 @@ layout: default
 title: Hello World!
 nav_order: 1
 parent: reversing
-permalink: /docs/reversing
 ---
 
 # Hello World! 리버싱
@@ -33,13 +32,14 @@ int _tmain(int argc, TCHAR* argv[])
 ```
 
 ## 1.1 HelloWorld.exe 디버깅
-HelloWorld.exe 파일을 OllyDbg로 열기
+- HelloWorld.exe 파일을 OllyDbg로 열기
 
 {: .note-title }
 > **OllyDbg**는 Windows 환경에서 동작하는 **디버거(Debugger)**로, 주로 어셈블리 언어 수준에서 프로그램의 실행을 분석하는 데 사용
 > [OllyDbg](https://www.ollydbg.de/)
 
-실행 파일을 디버깅(Debugging)하여 어셈블리 언어로 변환 된 main() 함수
+- 실행 파일을 디버깅(Debugging)하여 어셈블리 언어로 변환 된 main() 함수 찾기
+
 
 ## 1.3 공격 원리
 - Apache OFBiz의 웹 애플리케이션에서 엔드포인트를 스캔하여 취약한 엔드포인트 식별
