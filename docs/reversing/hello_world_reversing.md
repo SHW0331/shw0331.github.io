@@ -15,7 +15,9 @@ parent: reversing
 - Visual C++를 이용해 C 언어 HelloWorld.cpp를 빌드
 - 소스코드는 Windows API를 사용하여 "Hello World!"가 담긴 MessageBox 출력
 - HelloWorld.cpp 빌드 후, 실행 파일(HelloWorld.exe) 생성
+
 ![](../../assets/images/reversing/HelloWorld/1.png)
+
 ```cpp
 #include "windows.h"
 #include "tchar.h"
