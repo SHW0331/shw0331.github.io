@@ -11,6 +11,10 @@ parent: reversing
 
 ---
 
+## 실습 목표
+- HelloWold.exe 실행 파일을 디버깅하여 어셈블리 언어로 변환 된 main() 함수 찾기.
+- 찾는 과정을 통해서 기본적인 디버거의 사용법과 어셈블리 명령어에 대해 실습
+
 ## 1.0 Hello World! 프로그램 (32bit)
 - Visual C++를 이용해 C 언어 HelloWorld.cpp를 빌드
 - 소스코드는 Windows API를 사용하여 "Hello World!"가 담긴 MessageBox 출력
@@ -22,13 +26,13 @@ parent: reversing
 #include "windows.h"
 #include "tchar.h"
 
-int _tmain(int argc, TCHAR* argv[])
+int _tmain(int argc, TCHAR *argv[])
 {
-	MessageBox(NULL,
-		L"Hello World!",
-        L"Bite98",
-		MB_OK)
-		;
+	MessageBox(NULL, 
+			   L"Hello World!", 
+			   L"www.reversecore.com", 
+			   MB_OK);
+	
 	return 0;
 }
 ```
@@ -63,11 +67,26 @@ int _tmain(int argc, TCHAR* argv[])
 ## 1.3 **JMP HelloWor.40104F** 실행
 - **JMP HelloWor.40104F** 명령을 실행하면, **40104F** 주소로 이동
 - **401056** 주소의 CALL 402524 함수 호출 명령어 확인
+- 명령어 실행 후, 함수 내부 확인
 
 ![](../../assets/images/reversing/HelloWorld/3.png)
 
 
-## 1.4 어셈블리 언어로 변환 된 main() 함수 찾기
+## 1.4 Win32 API 호출 코드
+- F7,F8 명령으로 디버깅을 진행하면, **4010E4** 주소 확인
+- **CALL <JMP.&KERNEL32.GetCommandLineW>** 명령어는 Win32 API 호출 코드
 
+![](../../assets/images/reversing/HelloWorld/4.png)
+
+## 1.4 어셈블리 언어로 변환 된 main() 함수 찾기
+- 계속 디버깅을 진행하면, **401144** 주소 확인 후 명령어 실행해서 함수 내부 확인
+
+![](../../assets/images/reversing/HelloWorld/5.png)
+
+- MessageBoXW() API 호출하는 코드 확인
+- 그 API의 파라미터가 "www.reverse.core.com"과 "Hello World!" 문자열
+- HelloWorld.cpp의 소스코드와 일치하기 때문에 **401000** 함수가 바로 main() 함수
+
+![](../../assets/images/reversing/HelloWorld/6.png)
 
 ---
