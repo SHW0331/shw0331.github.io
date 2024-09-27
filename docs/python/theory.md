@@ -49,6 +49,25 @@ nav_order: 1
 - 유연성 : 인터프리터 언어는 동적으로 코드 실행 중 변수의 타입을 변경하거나 코드를 수정할 수 있다.
 - 속도 : 컴파일러 언어에 비해 전체 실행 속도는 느릴 수 있고, 프로그램이 실행될 떄마다 코드가 다시 해석되고 실행되므로, 복잡한 연산에서는 성능이 떨어질 수 있다.
 
+## 기본 문법
+파이썬의 기본적인 문법 : 변수 선언과 출력
+```py
+# 변수 선언
+name = "Python"
+age = 27
+
+print(name)
+print(type(name))
+print(age)
+print(type(age))
+
+""" 출력값 :
+Python
+<class 'str'>
+27
+<class 'int'>
+"""
+```
 
 ---
 [python json docs]: https://docs.python.org/3/tutorial/index.html
