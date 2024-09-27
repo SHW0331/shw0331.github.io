@@ -2,7 +2,7 @@
 layout: default
 title: json
 parent: python
-nav_order: 2
+nav_order: 5
 ---
 
 # JSON
