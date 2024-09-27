@@ -1,5 +1,6 @@
 ---
 layout: default
+<<<<<<< HEAD
 title: python
 nav_order: 5
 has_children: true
@@ -114,3 +115,19 @@ config.py: 애플리케이션 설정을 담는 파일입니다.
 run.py: 애플리케이션을 실행하는 파일입니다.
 
 # from steam_web_api import Steam
+=======
+title: flask
+nav_order: 2
+has_children: true
+permalink: /docs/splunk
+---
+
+# Flask
+
+본 문서는 Flask 공식 문서 참고
+{: .fs-6 .fw-300 }
+
+Version: Flask 3.0.3
+
+
+>>>>>>> 96edf119d221332068e4ae8306d4e7ced90af90c

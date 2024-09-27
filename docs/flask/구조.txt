@@ -1,0 +1,28 @@
+# 카테고리
+- 총 5개..의 카테고리
+User Dashboard --> Steam ID 값 : 17자리 숫자 || 커스텀 URL을 통해 접근
+    - GetPlayerSummaries
+    - GetFriendList
+    - GetPlayerBans
+    - GetUserStatsForGame
+    - GetOwnedGames
+Steam Market & Inventory
+    - GetAssetPrices
+    - GetAssetClassInfo
+    - GetInventory
+Steam News
+    - GetNewsForApp
+Steam Game
+    - GetAppList
+    - GetAppDetails
+    - GetGlobalAchievementPercentagesForApp
+    - GetNumberOfCurrentPlayers
+Steam Store 관련 (비공식 API)
+    - Steam Store API
+
+# 최신 디자인 요소
+- 미니멀리즘 (필요한 정보만 간결하게 배치, 많은 공간)
+- 다크 모드 지원
+- 애니메이션 효과?
+
+

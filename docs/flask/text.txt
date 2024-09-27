@@ -1,0 +1,83 @@
+- Flask?
+Flask는 Python으로 작성된 웹 애플리케이션 프레임워크로, 경량이며 확장성이 뛰어난 특징이 있다.
+Flask는 '마이크로 프레임워크'라고 불리지만, 필요한 확장 기능을 추가하면 대규모 프로젝트도 충분히 다룰 수 있다.
+
+- Flask 주요 특징
+Flask는 최소한의 구성 요소만 제공하므로, 개발자가 필요한 기능만 골라서 사용 가능
+Flask에서는 간단하게 라우팅 시스템을 사용하여 URL에 대한 처리를 지정 가능
+Flask는 기본적으로 Jinja2라는 템플릿 엔진을 사용하기 때문에 HTML 파일 내에서 Python 코드를 삽입 할 수 있음
+- 예시(템플릿 엔진)
+<!-- template.html -->
+<h1>Hello, {{ name }}!</h1>
+Flask는 간단한 라우팅 시스템을 기반으로 RESTful API를 쉽게 만들 수 있음
+
+- Flask 프로젝트 구조 (모듈화, 블루프린트(Blueprint) 사용)
+my_flask_project/
+│
+├── app/                    # 애플리케이션 모듈
+│   ├── __init__.py         # Flask 애플리케이션 객체를 생성하는 파일
+│   ├── main/               # 메인 블루프린트 모듈
+│   │   ├── __init__.py     # main 블루프린트 초기화
+│   │   ├── routes.py       # main 관련 라우팅 정의
+│   │   └── templates/      # main 블루프린트 템플릿 파일
+│   │       └── index.html
+│   ├── auth/               # 인증 관련 블루프린트 모듈 (예: 로그인, 회원가입)
+│   │   ├── __init__.py     # auth 블루프린트 초기화
+│   │   ├── routes.py       # auth 관련 라우팅 정의
+│   │   └── templates/      # auth 관련 템플릿 파일
+│   │       └── login.html
+│   ├── static/             # 모든 블루프린트에서 사용할 공통 정적 파일 (CSS, JS, 이미지)
+│   ├── templates/          # 공통 템플릿 파일 (헤더, 푸터 등)
+│   ├── models.py           # 데이터베이스 모델 정의
+│   └── forms.py            # WTForms를 사용하는 폼 정의
+│
+├── migrations/             # 데이터베이스 마이그레이션 파일 (Alembic 사용 시)
+├── tests/                  # 테스트 코드
+│   └── test_main.py        # 메인 블루프린트에 대한 테스트
+├── venv/                   # 가상 환경 (필요시)
+├── config.py               # 설정 파일 (DB, API 키 등 환경 설정)
+├── requirements.txt        # 프로젝트 의존성 파일
+└── run.py                  # 애플리케이션 실행 파일 (엔트리 포인트)
+
+- venv(가상환경)?
+Python 프로젝트마다 필요한 패키지와 라이브러리가 다를 수 있다.
+venv를 사용하여 각 프로젝트마다 독립적인 패키지 설치 공간을 만들어 서로 다른 버전의 라이브러리를 설치하여 충돌 방지
+프로젝트마다 사용된 라이브러리를 requirements.txt 파일로 관리할 수 있다.
+
+- Flask 설치
+pip install Flask
+
+- Blueprint?
+Flask에서 애플리케이션을 모듈화하는 데 사용되는 기능이다.
+대규모 애플리케이션을 개발할 때 모든 라우팅, 뷰 함수, 정적 파일 등을 하나의 파일에 넣으면 관리가 어려워진다.
+이를 해결하기 위해 Blueprint를 사용하여 애플리케이션의 기능을 여러 모듈로 나누고, 각각의 모듈을 독립적으로 관리할 수 있도록 한다.
+
+```auth 블루프린트 생성
+# app/auth/__init__.py
+from flask import Blueprint
+
+auth = Blueprint('auth', __name__)
+
+from app.auth import routes
+```
+
+```auth 라우팅 정의
+# app/auth/routes.py
+from flask import render_template
+from app.auth import auth
+
+@auth.route('/login')
+def login():
+    return render_template('login.html')
+```
+
+```애플리케이션에 auth Blueprint 등록
+from flask import Flask
+from app.auth import auth as auth_blueprint
+
+def create_app():
+    app = Flask(__name__)
+
+    app.register_blueprint(auth_blueprint, url_prefix='/auth')
+    return app
+```
