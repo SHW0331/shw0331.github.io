@@ -44,7 +44,7 @@ print(f'input() : {user_input}')
 ## sys.stdin.read()
 **sys.stdin.read()**는 여러 줄의 데이터를 받을 때 유용, 일반적으로 EOF(End of File)를 통해 입력을 종료
 
-{ .no title }
+{: .no_toc}
 > **EOF(End of File)**는 입력 스트림에서 더 이상 읽을 데이터가 없을 때 발생하며, Python에서는 표준 입력을 통해 여러 줄의 데이터를 받을 때 사용자가 입력을 종료하려면 EOF 신호를 보내야 한다.
 - Windows : Ctrl + Z 를 누르고 Enter 를 누르면 EOF 신호 발생
 - Unix/Linux/Mac : Ctrl + D 를 누르면 EOF 신호가 발생
