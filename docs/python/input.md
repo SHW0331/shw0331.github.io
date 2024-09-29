@@ -6,7 +6,7 @@ parent: python
 nav_order: 2
 ---
 
-# 사용자 입력 함수 (input)
+# 사용자 입력 함수
 {: .no_toc}
 
 본 문서는 python docs 참고하여 작성되었습니다.
