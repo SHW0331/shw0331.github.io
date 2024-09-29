@@ -1,7 +1,7 @@
 ---
 layout: default
 title: input
-category: "built-in"
+category: "bulit-in"
 parent: python
 nav_order: 2
 ---
