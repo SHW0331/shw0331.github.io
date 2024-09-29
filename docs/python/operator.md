@@ -151,5 +151,44 @@ k = round(z) # ndigits 생략하면 소수점 아래를 없애고 가장 가까�
 print(k) # 3
 ```
 
+## sum()
+`sum()`은 **iterable**의 모든 요소의 합을 계산하는 함수이다. 대표적인 **iterable**로는 list, tuple, set, dictionary가 있다.
+
+{: .no_toc}
+> **iterable**은 반복할 수 있는 객체로, 리스트, 튜플, 문자열, 딕셔너리, 집합 등이 포함된다. 이 객체들은 `for` 루프나 다른 반복 작업에서 순차적으로 하나씩 요소에 접근할 수 있다.
+
+```py
+# list의 모든 요소 합
+numbers = [1, 2, 3, 4, 5]
+result = sum(numbers)
+print(result) # 15
+
+# tuple의 모든 요소 합
+numbers = (1, 2, 3, 4, 5)
+result = sum(numbers)
+print(result) # 15
+
+# start 인자를 사용하여 합산
+numbers = [1, 2, 3]
+result = sum(numbers, 10) # start : 10
+print(result) # 16
+```
+
+## min()
+`min()`은 iterable 또는 여러 개의 인자에서 가장 작은 값을 반환한다.
+
+```py
+numbers = [4, 1, 7, 3]
+result = min(numbers)
+print(result) # 1
+
+result = min(4, 1, 7, 3)
+print(result) # 1
+
+result = min('python') # 문자열의 경우, 사전 순서로 가장 앞에 있는 문자를 반환
+print(result) # h
+```
+
+
 ---
 [python json docs]: https://docs.python.org/3/tutorial/index.html
