@@ -24,3 +24,12 @@ permalink: /docs/python
 
 ---
 
+## Etc..
+{% assign etc_docs = site.pages | where: "category", "etc" | sort: "title" %}
+<ul>
+  {% for doc in etc_docs %}
+    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+  {% endfor %}
+</ul>
+
+---

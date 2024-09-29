@@ -3,7 +3,7 @@ layout: default
 title: operator
 category: "bulit-in"
 parent: python
-nav_order: 2
+nav_order: 3
 ---
 
 # 연산자
@@ -38,9 +38,47 @@ Python 연산자는 여러 종류의 연산 작업을 수행하는 데 사용되
 
 ## 기본 산술 연산자(Arithmetic Operators)
 산술 연산을 수행하는 연산자
-- `+` : 덧셈 연산 
+- `+` : 덧셈 연산
 - `-` : 뺄셈 연산
 - `*` : 곱셈 연산
+- `/` : 나눗셈 연산 (소수점 포함)
+- `//` : 나눗셈 연산 (소수점 버림)
+- `%` : 나머지 연산
+- `**` : 거듭제곱 연산
+
+```py
+# 변수 선언
+x = 9
+y = 8
+
+# 덧셈 연산
+result = x + y
+print(f'X + Y = {result}') # X + Y = 17
+
+# 뺄셈 연산
+result = x - y
+print(f'X - Y = {result}') # X - Y = 1
+
+# 곱셈 연산
+result = x * y
+print(f'X * Y = {result}') # X * Y = 72
+
+# 나눗셈 연산 (소수점 포함)
+result = x / y
+print(f'X / Y = {result}') # X / Y = 1.125
+
+# 나눗셈 연산 (소수점 미포함)
+result = x // y
+print(f'X // Y = {result}') # X // Y = 1
+
+# 나머지 연산
+result = x % y
+print(f'X % Y = {result}') # X % Y = 1
+
+# 거듭제곱 연산
+result = x ** y
+print(f'X ** Y = {result}') # X ** Y = 43046721
+```
 
 ## abs(0)
 

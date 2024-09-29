@@ -2,6 +2,7 @@
 layout: default
 title: theory
 parent: python
+category: "etc"
 nav_order: 1
 ---
 
