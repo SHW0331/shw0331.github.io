@@ -189,6 +189,52 @@ result = min('python') # 문자열의 경우, 사전 순서로 가장 앞에 있
 print(result) # h
 ```
 
+## max()
+`max()`는 iterable에서 가장 큰 값을 반환하는 함수이다.
+
+```py
+numbers = [5, 8, 2, 9, 12, 4]
+result = max(numbers)
+print(result) # 12
+
+# key 매개변수에서 max() 사용 : 가장 긴 문자열 출력
+words = ["Python", "Java", "C++"]
+print(max(words, key=len)) # Python
+```
+
+## all()
+`all()`은 iterable에서 모든 요소가 참인지 확인하는 함수이다. 모든 요소가 참일 경우 **True**를 반환하며, 하나라도 거짓이 포함되어 있으면 **False**를 반환한다.
+
+```py
+numbers = [1, 2, 3, 4, 5]
+result = all(numbers)
+print(result) # True
+
+numbers = [1, 2, 3, 4, 0]
+result = all(numbers)
+print(result) # False, 0은 거짓
+
+empty_list = [ ]
+result = all(empty_list)
+print(result) # True, 빈 리스트나, 빈 튜플은 결과가 항상 True
+```
+
+## any()
+`any()`는 주어진 iterable에서 하나라도 **True**값이 있을 때 **True**를 반환하는 함수이다. 모든 값이 **False**이면 False를 반환한다.
+
+```py
+numbers = [0, 1, 0, 0]
+result = any(numbers)
+print(result) # True
+
+numbers = [0, 0, 0, 0]
+result = any(numbers)
+print(result) # False
+
+empty_list = [ ]
+result = any(empty_list)
+print(result) # Flase
+```
 
 ---
 [python json docs]: https://docs.python.org/3/tutorial/index.html
