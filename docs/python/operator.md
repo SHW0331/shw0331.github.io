@@ -80,15 +80,41 @@ result = x ** y
 print(f'X ** Y = {result}') # X ** Y = 43046721
 ```
 
-## abs(0)
-
+## abs()
+`abs`는 숫자의 절대값을 반환하는 함수이다. 절대값이란 음수값을 양수로 바꿔주는 것이며, 양수와 0은 그대로 반환
 
 ```py
-user_input = input("input : ")
-print(f'input() : {user_input}')
-# 입력 값 : shw98
-# 출력 값 : input() : shw98
+x = -9
+print(abs(x)) # 9
+print(abs(-x)) # 9
+
+y = -8.31
+print(abs(y)) # 8.31
+print(abs(-y)) # 8.31
 ```
+
+## divmod()
+`divmod()`는 두 숫자를 나누어 몫과 나머지를 한 번에 계산하고 결과 값을 **tuple** 형태로 반환
+
+{: .no_toc}
+>**tuple**이란 여러 개의 값을 순서가 있는 형태로 저장할 수 있는 자료구조이다. **tuple**은 immutable(불변), 즉 한 번 생성되면 그 안의 요소를 변경하거나 추가할 수 없다.
+
+```py
+result = divmod(10, 3)
+print(result) # (3, 1)
+
+# 몫과 나머지를 각각 변수로 저장
+quotient, remainder = divmod(9.5, 2)
+print(f'quotient : {quotient}, remainder : {remainder}') # quotient : 4.0, remainder : 1.5
+```
+
+## pow()
+`pow()`는 거듭제곱을 계산하는 함수로, 기본적인 두 인자를 사용한 거듭제곱뿐만 아니라 세 번째 인자를 사용하여 모듈러 연산도 지원
+
+{: .no_toc}
+>**모듈러 연산**이란, 어떤 수를 다른 수로 나누고 그 나머지를 구하는 연산, 나머지 연산이라고도 불린다.
+> 예시 : `a % b = r`이면, `a = bq + r`로 나타낼 수 있다, 여기서 `q`는 몫, `r`은 나머지, `r`은 항상 `0 <= r < b` 범위에 있다.
+
 
 ---
 [python json docs]: https://docs.python.org/3/tutorial/index.html

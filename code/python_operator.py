@@ -30,3 +30,18 @@
 # # result = x ** y
 # # print(f'X ** Y = {result}') # X ** Y = 430467213
 
+# x = -9
+# print(abs(x)) # 9
+# print(abs(-x)) # 9
+
+# y = -8.31
+# print(abs(y)) # 8.31
+# print(abs(-y)) # 8.31
+
+# result = divmod(10, 3)
+# print(result) # (3, 1)
+
+quotient, remainder = divmod(9.5, 2)
+print(f'quotient : {quotient}, remainder : {remainder}')
+
+
