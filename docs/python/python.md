@@ -12,10 +12,15 @@ permalink: /docs/python
 
 - Python Version : 3.10.11
 
-## Python built-in functions
+---
+
+## Built-in functions
 {% assign built_in_docs = site.pages | where: "category", "bulit-in" | sort: "title" %}
 <ul>
   {% for doc in built_in_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
   {% endfor %}
 </ul>
+
+---
+

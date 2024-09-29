@@ -12,10 +12,21 @@ permalink: /
 # shw0331 it Note  
 {: .fs-9 }
 
-CVE, Python, Splunk...
+Python, CVE, Splunk, Reversing, ...
 {: .fs-4 .fw-300 }
 
 [Github][Github]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
+
+---
+
+## Python
+Python 섹션에서는 다양한 Python 프로그래밍 주제와 예제를 다룹니다. 실습을 통해 얻은 내용을 자세히 기록하였습니다.
+
+### 주요 내용
+- Python 기초: 변수, 데이터 타입, 제어 구조
+- Python 모듈: requests, json..등 유용한 모듈 활용법
+- Python 예제: 웹 스크래핑, 데이터 분석, 자동화 스크립트
+- Flask 개발: Steam api 를 이용한 Steam Dashboard
 
 ---
 
@@ -30,16 +41,6 @@ CVE 섹션에서는 최신 보안 취약점 분석과 PoC (Proof of Concept) 환
 
 ## Reversing
 Reversing 섹션에서는 **리버싱 핵심원리(이승원 지음)** 책을 참고하여 Reversing에 대해 학습한 내용을 공유합니다. 실습을 통해 배운 내용을 정리했습니다.
-
----
-
-## Python
-Python 섹션에서는 다양한 Python 프로그래밍 주제와 예제를 다룹니다. 실습을 통해 얻은 내용을 자세히 기록하였습니다.
-
-### 주요 내용
-- Python 기초: 변수, 데이터 타입, 제어 구조
-- Python 모듈: requests, json..등 유용한 모듈 활용법
-- Python 예제: 웹 스크래핑, 데이터 분석, 자동화 스크립트
 
 ---
 
