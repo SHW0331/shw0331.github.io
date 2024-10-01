@@ -12,8 +12,16 @@ permalink: /docs/algorithm
 
 ---
 
-## 정렬
+## sort
 {% assign algorithm_docs = site.pages | where: "category", "sort" | sort: "title" %}
+<ul>
+  {% for doc in algorithm_docs %}
+    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+  {% endfor %}
+</ul>
+
+## etc
+{% assign algorithm_docs = site.pages | where: "category", "etc" | sort: "title" %}
 <ul>
   {% for doc in algorithm_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
