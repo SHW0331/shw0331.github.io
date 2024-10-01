@@ -23,10 +23,10 @@ Python, CVE, Splunk, Reversing, ...
 Python 섹션에서는 다양한 Python 프로그래밍 주제와 예제를 다룹니다. 실습을 통해 얻은 내용을 자세히 기록하였습니다.
 
 ### 주요 내용
-- Python 기초: 변수, 데이터 타입, 제어 구조
-- Python 모듈: requests, json..등 유용한 모듈 활용법
-- Python 예제: 웹 스크래핑, 데이터 분석, 자동화 스크립트
-- Flask 개발: Steam api 를 이용한 Steam Dashboard
+- Python 기초 : 변수, 데이터 타입, 제어 구조
+- Python 모듈 : requests, json..등 유용한 모듈 활용법
+- Python 예제 : 웹 스크래핑, 데이터 분석, 자동화 스크립트
+- Flask 개발 : Steam api 를 이용한 Steam Dashboard
 
 ---
 
