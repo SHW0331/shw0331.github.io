@@ -60,29 +60,6 @@ result = len(data_dict)
 print(f'dict len : {result}') # dict len : 3
 ```
 
-## enumerate()
-`enumerate()` 함수는 주어진 iterable을 열거형으로 만들어 각 요소와 함께 인덱스를 반환하는 함수이다. 이를 통해 루프를 돌면서 인덱스와 값을 동시에 사용할 수 있다.
-
-{: .no_toc}
-> **start** 옵션을 추가하여 인덱스 시작 값을 설정할 수 있다.
-> `enumerate(iterable, start=1), 시작 값 1
-
-```py
-fruits = ['apple', 'banana', 'cherry']
-for index, fruit in enumerate(fruits, start=1):
-    print(f'과일 {index} : {fruit}') 
-    # 과일 1 : apple
-    # 과일 2 : banana
-    # 과일 3 : cherry
-
-data_tuple = ('a', 'b', 'c')
-for index, value in enumerate(data_tuple):
-    print(f'index {index} : {value}')
-    # index 0 : a
-    # index 1 : b
-    # index 2 : c
-```
-
 ## str()
 `str()` 함수는 객체를 문자열로 변환하는 함수이다. 숫자, 리스트, 튜플, 딕셔너리, 또는 다른 타입의 객체를 문자열로 변환할 때 사용한다.
 
@@ -107,7 +84,102 @@ print(result) # Test, format() 테스트
 ```
 
 ## upper()
-`upper()`
+`upper()` 함수는 문자열의 모든 문자를 대문자로 변환한다.
+
+```py
+result = 'shw'.upper()
+print(result) # SHW
+```
+
+## lower()
+`lower()` 함수는 문자열의 모든 문자를 소문자로 변환한다.
+
+```py
+result = 'SHW'.lower()
+print(result) # shw
+```
+
+## strip()
+`strip()` 함수는 문자열 양쪽 끝의 공백 또는 특정 문자를 제거한다. 기본적으로 공백을 제거하며, 특정 문자를 지정할 수도 있다.
+
+```py
+result = '     space    '.strip()
+print(result) # space
+
+result = '#######space#########'.strip('#')
+print(result) # space
+```
+
+## split()
+`split()` 함수는 문자열을 특정 구분자를 기준으로 나누어 리스트로 반환한다. 기본 구분자는 공백이며, 다른 구분자를 지정할 수 있다.
+
+```py
+result = 'a,b,c'.split(',')
+print(result) # ['a', 'b', 'c']
+
+result = 'abc de fgh ijk'.split()
+print(result) # ['abc', 'de', 'fgh', 'ijk']
+```
+
+## join()
+`join()` 함수는 리스트나 iterable의 요소를 하나의 문자열로 결합할 때 사용한다. 요소 사이에 구분자를 넣어 결합할 수 있다.
+
+```py
+result = ','.join(['a', 'b', 'c'])
+print(result) # a,b,c
+
+result = ' '.join(['aaaaaaa', 'bbbbb'])
+print(result) # aaaaaaa bbbbb
+```
+
+## replace()
+`replace()` 함수는 문자열 내의 특정 부분을 다른 문자열로 대체하는 함수이다. 문자열의 모든 해당 부분이 바뀐다.
+
+```py
+result = 'shw98'.replace('98', '0331')
+print(result) # shw0331
+```
+
+## find()
+`find()` 함수는 문자열 내에서 특정 문자나 문자열의 첫 번째 위치를 반환한다. 찾는 문자가 없으면 **-1**을 반환한다.
+
+```py
+result = 'shw0331'.find('s')
+print(result) # 0 : index 0
+
+result = 'shw0331'.find('w')
+print(result) # 2 : index 2
+
+result = 'shw0331'.find('a')
+print(result) # -1 : False
+```
+
+## count()
+`count()` 함수는 문자열 내에서 특정 문자가 몇 번 등장하는지 출현 횟수를 반환한다.
+
+```py
+result = 'shw0331'.count('3')
+print(result) # 2
+
+result = 'shw0331'.count('a')
+print(result) # 0
+```
+
+## reversed()
+`reversed()` 함수는 주어진 iterable 객체의 요소들을 역순으로 반환하는 함수이다. 이 함수는 원본 데이터를 변경하지 않고, 역순으로 iterator를 반환한다.
+
+{: no_toc }
+> `reversed()` 함수는 문자열을 뒤집은 값을 바로 반환하는 것이 아니라, **reversed object**라는 **iterator**를 반환합니다. 이 iterator 원래의 문자열을 거꾸로 순회할 수 있는 객체이지만, 이를 바로 출력하면 사람이 읽을 수 있는 문자열 형태로 출력되지 않습니다.
+
+```py
+numbers = [1, 2, 3, 4, 5]
+reversed_numbers = reversed(numbers)
+print(list(reversed_numbers)) # [5, 4, 3, 2, 1]
+
+text = 'shw0331'
+reversed_text = reversed(text)
+print(''.join(reversed_text)) # 1330whs
+```
 
 ## zip()
 `zip()` 함수는 여러 iterable 객체의 요소들을 같은 인덱스끼리 묶어 튜플로 반환하는 함수이다. 각 iterable에서 동일한 인덱스에 위치한 요소들을 하나의 튜플로 묶고, 그 튜플들의 리스트(또는 다른 iterable)를 반환한다.
@@ -143,8 +215,28 @@ for team, score in result:
     # c : 2점
 ```
 
+## enumerate()
+`enumerate()` 함수는 주어진 iterable을 열거형으로 만들어 각 요소와 함께 인덱스를 반환하는 함수이다. 이를 통해 루프를 돌면서 인덱스와 값을 동시에 사용할 수 있다.
 
+{: .no_toc}
+> **start** 옵션을 추가하여 인덱스 시작 값을 설정할 수 있다.
+> `enumerate(iterable, start=1), 시작 값 1
 
+```py
+fruits = ['apple', 'banana', 'cherry']
+for index, fruit in enumerate(fruits, start=1):
+    print(f'과일 {index} : {fruit}') 
+    # 과일 1 : apple
+    # 과일 2 : banana
+    # 과일 3 : cherry
+
+data_tuple = ('a', 'b', 'c')
+for index, value in enumerate(data_tuple):
+    print(f'index {index} : {value}')
+    # index 0 : a
+    # index 1 : b
+    # index 2 : c
+```
 
 ---
 

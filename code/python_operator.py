@@ -1,2 +1,3 @@
-result = 'Test, {}'.format('format() 테스트')
-print(result) # Test, format() 테스트
+text = 'shw0331'
+reversed_text = reversed(text)
+print(''.join(reversed_text))
