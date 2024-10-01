@@ -24,19 +24,24 @@ Python 연산자는 여러 종류의 연산 작업을 수행하는 데 사용되
 
 ## Python 문자열 처리 함수 요약
 
-| 함수명               | 설명                                                      | 사용 예시                                       |
-|----------------------|----------------------------------------------------------|-----------------------------------------------|
-| `len()`              | 문자열의 길이(문자 개수)를 반환                              | `len("hello")  # 결과: 5`                      |
-| `str()`              | 객체를 문자열로 변환                                        | `str(123)  # 결과: '123'`                      |
+| 함수명               | 설명                                                      | 사용 예시                                     |
+|----------------------|----------------------------------------------------------|----------------------------------------------|
+| `len()`              | 문자열의 길이(문자 개수)를 반환                              | `len("hello")  # 결과: 5`                    |
+| `str()`              | 객체를 문자열로 변환                                        | `str(123)  # 결과: '123'`                    |
 | `format()`           | 문자열 포매팅을 통해 값을 삽입하거나, 형식을 지정              | `"Hello, {}".format("world")  # 결과: 'Hello, world'` |
-| `upper()`            | 문자열을 모두 대문자로 변환                                 | `"hello".upper()  # 결과: 'HELLO'`             |
-| `lower()`            | 문자열을 모두 소문자로 변환                                 | `"HELLO".lower()  # 결과: 'hello'`             |
-| `strip()`            | 문자열 양쪽 끝의 공백이나 특정 문자 제거                     | `"  hello  ".strip()  # 결과: 'hello'`         |
-| `split()`            | 구분자를 기준으로 문자열을 나눠 리스트로 반환                 | `"a,b,c".split(',')  # 결과: ['a', 'b', 'c']`  |
-| `join()`             | 리스트 등의 iterable을 문자열로 결합                         | `",".join(['a', 'b', 'c'])  # 결과: 'a,b,c'`   |
-| `replace()`          | 문자열 내의 특정 부분을 다른 문자열로 대체                   | `"hello".replace("l", "x")  # 결과: 'hexxo'`   |
-| `find()`             | 문자열 내에서 특정 문자나 문자열의 첫 번째 위치를 반환         | `"hello".find('e')  # 결과: 1`                 |
-| `count()`            | 문자열 내에서 특정 문자의 출현 횟수를 반환                    | `"hello".count('l')  # 결과: 2`                |
+| `upper()`            | 문자열을 모두 대문자로 변환                                 | `"hello".upper()  # 결과: 'HELLO'`           |
+| `lower()`            | 문자열을 모두 소문자로 변환                                 | `"HELLO".lower()  # 결과: 'hello'`           |
+| `strip()`            | 문자열 양쪽 끝의 공백이나 특정 문자 제거                     | `"  hello  ".strip()  # 결과: 'hello'`       |
+| `split()`            | 구분자를 기준으로 문자열을 나눠 리스트로 반환                 | `"a,b,c".split(',')  # 결과: ['a', 'b', 'c']`|
+| `join()`             | 리스트 등의 iterable을 문자열로 결합                         | `",".join(['a', 'b', 'c'])  # 결과: 'a,b,c'` |
+| `replace()`          | 문자열 내의 특정 부분을 다른 문자열로 대체                   | `"hello".replace("l", "x")  # 결과: 'hexxo'` |
+| `find()`             | 문자열 내에서 특정 문자나 문자열의 첫 번째 위치를 반환         | `"hello".find('e')  # 결과: 1`               |
+| `count()`            | 문자열 내에서 특정 문자의 출현 횟수를 반환                    | `"hello".count('l')  # 결과: 2`              |
+| `reversed()`         | 문자열을 역순으로 반환                                      | `"hello"[::-1]  # 결과: 'olleh'`             |
+| `enumerate()`        | 문자열을 인덱스와 함께 열거하여 반환                        | `for idx, char in enumerate('hello'): print(idx, char)`  |
+| `zip()`              | 여러 문자열을 병렬로 묶어서 튜플 형태로 반환                | `zip('abc', '123')  # 결과: [('a', '1'), ('b', '2'), ('c', '3')]` |
+
+---
 
 ## len()
 `len()` 함수는 iterable 객체의 길이를 반환하는 함수이다. 여기서 길이는 해당 객체에 포함된 요소의 개수를 의미
@@ -78,6 +83,32 @@ for index, value in enumerate(data_tuple):
     # index 2 : c
 ```
 
+## str()
+`str()` 함수는 객체를 문자열로 변환하는 함수이다. 숫자, 리스트, 튜플, 딕셔너리, 또는 다른 타입의 객체를 문자열로 변환할 때 사용한다.
+
+```py
+num = 980
+result = str(num)
+print(result) # 980
+print(type(result)) # <class 'str'>
+
+boolean_value = True
+result = str(boolean_value)
+print(result) # True
+print(type(result)) # <class 'str'>
+```
+
+## format()
+`format()` 함수는 문자열을 포맷팅하여 특정 값이나 데이터를 삽입하거나, 형식을 지정하는 데 사용한다.
+
+```py
+result = 'Test, {}'.format('format() 테스트')
+print(result) # Test, format() 테스트
+```
+
+## upper()
+`upper()`
+
 ## zip()
 `zip()` 함수는 여러 iterable 객체의 요소들을 같은 인덱스끼리 묶어 튜플로 반환하는 함수이다. 각 iterable에서 동일한 인덱스에 위치한 요소들을 하나의 튜플로 묶고, 그 튜플들의 리스트(또는 다른 iterable)를 반환한다.
 
@@ -91,6 +122,28 @@ for index, value in enumerate(data_tuple):
 > | **속도**      | 튜플이 리스트보다 빠름                             | 리스트는 튜플보다 상대적으로 느림               |
 > | **메서드**    | 소수의 메서드만 제공 (`count()`, `index()` 등)      | 다양한 메서드 제공 (`append()`, `extend()`, `remove()` 등) |
 > | **사용 용도** | 데이터를 보호하고 싶을 때, 변경이 불필요한 경우에 사용 | 데이터를 변경, 수정, 추가해야 할 때 사용         |
+
+```py
+names = ['shw', 'abc', 'qwe']
+ages = [27, 33, 12]
+result = zip(names, ages)
+print(result)
+# index 0 : a
+# index 1 : b
+# index 2 : c
+print(list(result)) # [('shw', 27), ('abc', 33), ('qwe', 12)]
+
+teams = ['a', 'b', 'c']
+scores = [5, 7, 2]
+result = zip(teams, scores)
+for team, score in result:
+    print(f'{team} : {score}점')
+    # a : 5점
+    # b : 7점
+    # c : 2점
+```
+
+
 
 
 ---

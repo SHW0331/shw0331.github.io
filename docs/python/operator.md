@@ -36,6 +36,8 @@ Python 연산자는 여러 종류의 연산 작업을 수행하는 데 사용되
 | `any()`              | 주어진 iterable 내의 요소 중 하나라도 참(True)이면 참을 반환     | `result = any([False, True, False])  # 결과: True` |
 | `all()`              | 주어진 iterable 내의 모든 요소가 참(True)이면 참을 반환         | `result = all([True, True, False])  # 결과: False` |
 
+---
+
 ## 기본 산술 연산자(Arithmetic Operators)
 산술 연산을 수행하는 연산자
 - `+` : 덧셈 연산

@@ -32,6 +32,8 @@ nav_order: 2
 | `argparse`           | 명령줄 인자를 처리하는 데 사용                                   | `parser = argparse.ArgumentParser()`     |
 | `fileinput.input()`   | 여러 파일이나 표준 입력에서 한 줄씩 입력을 읽음                              | `for line in fileinput.input(): print(line)` |
 
+---
+
 ## input()
 가장 기본적인 사용자 입력 함수로, 사용자로부터 한 줄의 입력을 받을 때 사용, 입력된 값은 항상 문자열로 반환
 
