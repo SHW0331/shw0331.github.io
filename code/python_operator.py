@@ -1,3 +1,3 @@
-text = 'shw0331'
-reversed_text = reversed(text)
-print(''.join(reversed_text))
+def print_elements(arr):
+    for element in arr:
+        print(element)
