@@ -12,7 +12,7 @@ nav_order: 3
 본 문서는 python docs 참고하여 작성되었습니다.
 {: .fs-6 .fw-300 }
 
-[json Docs][python json docs]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
+[Python Docs][python docs]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
 
 1. TOC
 {:toc}
@@ -239,4 +239,5 @@ print(result) # Flase
 ```
 
 ---
-[python json docs]: https://docs.python.org/3/tutorial/index.html
+
+[python docs]: https://docs.python.org/3/tutorial/index.html

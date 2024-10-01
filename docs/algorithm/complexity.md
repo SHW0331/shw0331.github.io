@@ -60,7 +60,33 @@ def bubble_sort(arr):
 ## Space Complexity Big-O 표기법
 공간 복잡도 역시 Big-O 표기법으로 나타내며, 알고리즘이 필요로 하는 추가적인 메모리를 평가한다.
 
+- O(1) : 상수 공간, 입력 크기와 상관없이 일정한 양의 메모리만 사용한다.
+- O(n) : 선형 공간, 입력 크기에 비례하여 메모리 사용이 증가한다.
+- O(n^2) : 이차 공간, 입력 크기가 커질수록 메모리 사용이 급격히 증가한다.
 
+## Space Complexity 예시
+- 상수 공간 복잡도 O(1)
+- 이 함수는 입력 배열 외에 추가로 변수를 하나만 사용하므로 공간 복잡도는 **O(1)**이다.
 
+```py
+def sum_elements(arr):
+    total = 0 # 상수 공간 사용
+    for element in arr:
+        total += element
+    return total
+```
+
+<br>
+
+- 배열을 복사하는 경우 O(n)
+- 입력 크기(n)에 따라 새로운 배열을 생성하므로 공간 복잡도는 **O(n)**이다.
+
+```py
+def copy_array(arr):
+    new_arr[]
+    for element in arr:
+        new_arr.append(element)
+    return new_arr
+```
 
 ---
