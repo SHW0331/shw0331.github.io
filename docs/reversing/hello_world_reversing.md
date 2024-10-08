@@ -14,6 +14,9 @@ parent: reversing
 ## 실습 목표
 - HelloWold.exe 실행 파일을 디버깅하여 어셈블리 언어로 변환 된 main() 함수 찾기.
 - 찾는 과정을 통해서 기본적인 디버거의 사용법과 어셈블리 명령어에 대해 실습
+- 디버거를 이용해서 프로그램의 내용을 간단히 패치하는 실습
+
+---
 
 ## 1.0 Hello World! 프로그램 (32bit)
 - Visual C++를 이용해 C 언어 HelloWorld.cpp를 빌드
@@ -90,3 +93,32 @@ int _tmain(int argc, TCHAR *argv[])
 ![](../../assets/images/reversing/HelloWorld/6.png)
 
 ---
+
+## 2.1 디버거 동장 명령(Code Window에서 동작) 요약
+
+| 명령어                    | 단축키       | 설명                                                                 |
+|----------------------------|--------------|----------------------------------------------------------------------|
+| Go to                      | Ctrl+G       | 원하는 주소로 이동(코드/메모리를 확인할 때 사용. 실행되는 것은 아님)  |
+| Execute till Cursor         | F4           | 커서 위치까지 실행(디버깅하고 싶은 주소까지 바로 갈 수 있음)           |
+| Comment                     | ;            | Comment 추가                                                         |
+| User-defined comment        | 마우스 우측 메뉴 | search for user-defined comment                                       |
+| Label                       | :            | Label 추가                                                           |
+| User-defined label          | 마우스 우측 메뉴 | search for user-defined label                                         |
+| Set/Reset BreakPoint        | F2           | BP 설정/해제                                                         |
+| Run                         | F9           | 실행(BP가 걸려있으면 그곳에서 실행이 정지됨)                         |
+| Show the current EIP        | *            | 현재 EIP 위치를 보여줍니다.                                           |
+| Show the previous Cursor    | -            | 직전 커서 위치를 다시 보여줍니다.                                     |
+| Preview CALL/JMP address    | Enter        | 커서가 CALL/JMP 등의 명령어에 위치해 있다면 해당 주소를 따라가서 보여줌 (실행되는 것이 아님, 간단히 함수 내용을 확인할 때 사용) |
+
+{: .no_toc}
+> **EIP(Extended Instruction Pointer)**는 CPU가 현재 실행하고 있는 명령어의 메모리 주소를 가리키는 레지스터이다. 주로 x86 아키텍처에서 사용되며, 프로그램의 실행 흐름을 관리하는 중요한 역할을 한다.
+
+## 2.1 Basecamp
+- 베이스캠프는 리버스 엔지니어들이 디버깅을 진행하면서 중간중간 코드에서 분석을 원하는 중요 포인트(주소)를 지정해 놓은 후 그 포인트로 빠르게 갈 수 있는 방법을 기록해 두는 방법이다.
+- 베이스캠프를 설치하는 4가지 방법으로는 **Goto 명령**, **BP 설치**, **주석**, **레이블** 등 이 있다.
+
+## 2.2 Goto 명령
+- **HelloWorld.exe**를 디버깅하고, 40104F 주소를 베이스캠프로 설정
+- Go to`[Ctrl+G]` 다이얼로그에 40104F 주소 입력
+
+![](../../assets/images/reversing/HelloWorld/7.png)
