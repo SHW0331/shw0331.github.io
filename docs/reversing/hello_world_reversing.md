@@ -136,8 +136,8 @@ int _tmain(int argc, TCHAR *argv[])
 ## 2.4 주석
 - [;] 단축키로 주석(Comment)을 달고, 주석을 찾아 가는 방법
 
-![](../../assets/images/reversing/HelloWorld/9.png)
+![](../../assets/images/reversing/HelloWorld/10.png)
 
 {: .no_toc}
-> 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
-> ![](../../assets/images/reversing/HelloWorld/9.png)
+> 마우스 우측 메뉴의 Search for-User-defined comment 항목을 선택하면, 사용자가 입력한 주석들이 표시가 됨
+> ![](../../assets/images/reversing/HelloWorld/11.png)
