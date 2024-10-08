@@ -119,6 +119,25 @@ int _tmain(int argc, TCHAR *argv[])
 
 ## 2.2 Goto 명령
 - **HelloWorld.exe**를 디버깅하고, 40104F 주소를 베이스캠프로 설정
-- Go to`[Ctrl+G]` 다이얼로그에 40104F 주소 입력
+- Go to[Ctrl+G] 다이얼로그에 40104F 주소 입력
 
 ![](../../assets/images/reversing/HelloWorld/7.png)
+
+## 2.3 BP 설치
+- 베이스캠프로 가는 또 다른 방법은 BP(Break Point)를 설치[F2], 하고 실행[F9]하는 것이다.
+- 디버거는 현재 실행 위치에서부터 프로세스를 실행하다가 BP가 걸린 곳에서 멈추게 된다.
+
+![](../../assets/images/reversing/HelloWorld/8.png)
+
+{: .no_toc}
+> 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
+> ![](../../assets/images/reversing/HelloWorld/9.png)
+
+## 2.4 주석
+- [;] 단축키로 주석(Comment)을 달고, 주석을 찾아 가는 방법
+
+![](../../assets/images/reversing/HelloWorld/9.png)
+
+{: .no_toc}
+> 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
+> ![](../../assets/images/reversing/HelloWorld/9.png)
