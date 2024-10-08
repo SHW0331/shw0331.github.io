@@ -17,15 +17,20 @@ parent: reversing
 
 ## 디버거 동작 명령(Codw Window에서 동작) 요약
 
-| 함수명                | 단축키                                                     | 설명                                 |
-|----------------------|----------------------------------------------------------|------------------------------------------|
-| `Go to`            | 기본적인 문자열 입력 함수                                      | `name = input("이름을 입력하세요")`         |
-| `sys.stdin.read()`    | 여러 줄 입력을 받을 때 사용, EOF까지 모든 데이터를 읽음                         | `data = sys.stdin.read()`                |
-| `getpass.getpass()`   | 비밀번호 등 민감한 입력을 받을 때 사용, 화면에 입력 내용이 표시되지 않음               | `password = getpass.getpass("비밀번호")`    |
-| `argparse`           | 명령줄 인자를 처리하는 데 사용                                   | `parser = argparse.ArgumentParser()`     |
-| `fileinput.input()`   | 여러 파일이나 표준 입력에서 한 줄씩 입력을 읽음                              | `for line in fileinput.input(): print(line)` |
+| 명령어                    | 단축키       | 설명                                                                 |
+|----------------------------|--------------|----------------------------------------------------------------------|
+| Go to                      | Ctrl+G       | 원하는 주소로 이동(코드/메모리를 확인할 때 사용. 실행되는 것은 아님)  |
+| Execute till Cursor         | F4           | 커서 위치까지 실행(디버깅하고 싶은 주소까지 바로 갈 수 있음)           |
+| Comment                     | ;            | Comment 추가                                                         |
+| User-defined comment        | 마우스 우측 메뉴 | search for user-defined comment                                       |
+| Label                       | :            | Label 추가                                                           |
+| User-defined label          | 마우스 우측 메뉴 | search for user-defined label                                         |
+| Set/Reset BreakPoint        | F2           | BP 설정/해제                                                         |
+| Run                         | F9           | 실행(BP가 걸려있으면 그곳에서 실행이 정지됨)                         |
+| Show the current EIP        | *            | 현재 EIP 위치를 보여줍니다.                                           |
+| Show the previous Cursor    | -            | 직전 커서 위치를 다시 보여줍니다.                                     |
+| Preview CALL/JMP address    | Enter        | 커서가 CALL/JMP 등의 명령어에 위치해 있다면 해당 주소를 따라가서 보여줌 (실행되는 것이 아님, 간단히 함수 내용을 확인할 때 사용) |
 
-![](../../assets/images/reversing/HelloWorld/1.png)
 
 ```cpp
 #include "windows.h"
