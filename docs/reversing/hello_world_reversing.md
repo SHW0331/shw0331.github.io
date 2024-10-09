@@ -130,8 +130,8 @@ int _tmain(int argc, TCHAR *argv[])
 ![](../../assets/images/reversing/HelloWorld/8.png)
 
 {: .no_toc}
-> 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
-> ![](../../assets/images/reversing/HelloWorld/9.png)
+> - 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
+> - ![](../../assets/images/reversing/HelloWorld/9.png)
 
 ## 2.4 주석
 - [;] 단축키로 주석(Comment)을 달고, 주석을 찾아 가는 방법
@@ -139,5 +139,48 @@ int _tmain(int argc, TCHAR *argv[])
 ![](../../assets/images/reversing/HelloWorld/10.png)
 
 {: .no_toc}
-> 마우스 우측 메뉴의 Search for-User-defined comment 항목을 선택하면, 사용자가 입력한 주석들이 표시가 됨
-> ![](../../assets/images/reversing/HelloWorld/11.png)
+> - 마우스 우측 메뉴의 Search for-User-defined comment 항목을 선택하면, 사용자가 입력한 주석들이 표시가 됨
+> - ![](../../assets/images/reversing/HelloWorld/11.png)
+
+## 2.5 레이블
+- 레이블(Lable)은 원하는 주소에 특정 이름을 붙여주는 기능
+- 40104F 주소에 커서를 위치시킨 후 단축키 [:]를 이용해 레이블을 입력
+
+![](../../assets/images/reversing/HelloWorld/12.png)
+
+{: .no_toc}
+> - 4011A5 주소에 40104F 주소를 해당 레이블로 표시
+> - ![](../../assets/images/reversing/HelloWorld/13.png)
+> <br>
+> - 레이블도 주석과 마찬가지로 검색이 가능
+> - 마우스 우측 메뉴의 'Search for - User defined labels' (Initial CPU selection이라고 표시된 부분은 현재 커서 위치를 나타냄)
+> - ![](../../assets/images/reversing/HelloWorld/14.png)
+
+---
+
+## 3.1 원하는 코드 빨리 찾아내는 4가지 방법
+- Hello World.exe 프로그램이 "Hello World!" 메시지 박스를 출력한다는 것을 이미 알고 있다.
+- Win32 API 개발자들이라면 MessageBox() API 함수가 머릿속에 떠오를 것이다.
+- 이렇게 프로그램의 기능이 명확한 경우는 그냥 실행만 해봐도 내부 구조를 대략적으로 추측할 수 있다.
+
+## 3.2 코드 실행 방법
+- 코드 실행 방법의 원리는 아래와 같다.
+- 필요한 코드는 main() 함수의 MessageBox() 함수 호출 코드
+- HelloWorld.exe를 디버깅하다 보면, 언젠가 main()함수의 MessageBox()함수가 실행되어 "Heelo World!" 메시지 박스가 출력된다.
+
+## 3.3 코드 실행 실습
+- 베이스캠프(40104F)에서부터 명령어를 한 줄씩 실행[F8]한다.
+- 몇 번 반복해보면 특정 함수를 호출한 이후에 메시지 박스가 나타나는 것을 파악할 수 있음
+- 바로 그 함수가 main() 함수이다.
+- ![](../../assets/images/reversing/HelloWorld/15.png)
+
+{: .no_toc}
+> - 40114 주소에 있는 CALL 00401000 명령어에서 호출하는 함수 주소(401000)로 가보면(Step Into[F7]), main() 함수의 코드 영역
+> - 401002와 401007 주소의 PUSH 명령어는 메시지 박스에 표시될 문자열을 스택(Stack)에 저장하여 MessageBoxW() 함수에 파라미터로 전달
+> - ![](../../assets/images/reversing/HelloWorld/16.png) 
+
+## 3.4 문자열 검색 방법
+- OllyDbg가 디버깅할 프로그램을 처음 로딩할 때 사전 분석 과정을 거침.
+- 프로세스 메모리를 훑어서 참조되는 문자열과 호출되는 API들을 뽑아내서 따로 목록으로 정리
+- 마우스 우측 메뉴 - Search for - All referenced text strings
+
