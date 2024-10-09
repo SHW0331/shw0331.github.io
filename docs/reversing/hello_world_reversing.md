@@ -183,4 +183,30 @@ int _tmain(int argc, TCHAR *argv[])
 - OllyDbg가 디버깅할 프로그램을 처음 로딩할 때 사전 분석 과정을 거침.
 - 프로세스 메모리를 훑어서 참조되는 문자열과 호출되는 API들을 뽑아내서 따로 목록으로 정리
 - 마우스 우측 메뉴 - Search for - All referenced text strings
+- ![](../../assets/images/reversing/HelloWorld/17.png) 
+
+{: .no_toc}
+> - 401007 주소의 PUSH 004092A0 명령어가 있는데, 이 명령어에서 참조되는 4092A0 주소에 있는 문자열의 확인을 위하여 OllyDbg의 덤프(Dump) 창에서 확인
+> - 유니코드(UniCode)로 된 "Hello World!" 문자열 확인
+> - ![](../../assets/images/reversing/HelloWorld/18.png) 
+ 
+## 3.5 API 검색 방법 - 1
+- Windows 프로그래밍에서 모니터 화면에 뭔가를 출력하려면 Win32 API를 사용하여 OS에게 화면 출력을 요청해야 함.
+- 따라서 프로그램의 기능을 보고 사용되었을 법한 Win32 API 호출을 예상하여, 그 부분을 찾을 수 있다면, 디버깅이 매우 간편
+- 코드에에서 사용된 API 호출 목록만 보고 싶을 때는 **All intermodular calls** 명령을 사용.
+- ![](../../assets/images/reversing/HelloWorld/19.png) 
+
+## 3.6 API 검색 방법 - 2
+- Packer/Protector를 사용하여 실행 파일을 압축(또는 보호)해버리면, 파일 구조가 변경되어 OllyDbg에서 API 호출 목록이 보이지 않는다.
+- 이런 경우에는 프로세스 메모리에 로딩된 라이브러리에 직접 BP를 걸어 보는 것이다.
+- 실제로 API는 C:\Windows\system32 폴더에 *.dll 파일 내부에 구현되어 있다.
+- View - Memory 메뉴를 선택 (단축키 [Alt+M])
+- ![](../../assets/images/reversing/HelloWorld/20.png) 
+
+<br>
+
+- **Name in all modules** 명령을 사용하고, 나타나는 창에서 **Name** 으로 정렬시키고, **MessageBoxW**를 타이핑
+- USER32 모듈에서 Export type의 MessageBoxW 함수를 선택
+- ![](../../assets/images/reversing/HelloWorld/21.png) 
+
 
