@@ -94,25 +94,6 @@ int _tmain(int argc, TCHAR *argv[])
 
 ---
 
-## 2.1 디버거 동장 명령(Code Window에서 동작) 요약
-
-| 명령어                    | 단축키       | 설명                                                                 |
-|----------------------------|--------------|----------------------------------------------------------------------|
-| Go to                      | Ctrl+G       | 원하는 주소로 이동(코드/메모리를 확인할 때 사용. 실행되는 것은 아님)  |
-| Execute till Cursor         | F4           | 커서 위치까지 실행(디버깅하고 싶은 주소까지 바로 갈 수 있음)           |
-| Comment                     | ;            | Comment 추가                                                         |
-| User-defined comment        | 마우스 우측 메뉴 | search for user-defined comment                                       |
-| Label                       | :            | Label 추가                                                           |
-| User-defined label          | 마우스 우측 메뉴 | search for user-defined label                                         |
-| Set/Reset BreakPoint        | F2           | BP 설정/해제                                                         |
-| Run                         | F9           | 실행(BP가 걸려있으면 그곳에서 실행이 정지됨)                         |
-| Show the current EIP        | *            | 현재 EIP 위치를 보여줍니다.                                           |
-| Show the previous Cursor    | -            | 직전 커서 위치를 다시 보여줍니다.                                     |
-| Preview CALL/JMP address    | Enter        | 커서가 CALL/JMP 등의 명령어에 위치해 있다면 해당 주소를 따라가서 보여줌 (실행되는 것이 아님, 간단히 함수 내용을 확인할 때 사용) |
-
-{: .no_toc}
-> **EIP(Extended Instruction Pointer)**는 CPU가 현재 실행하고 있는 명령어의 메모리 주소를 가리키는 레지스터이다. 주로 x86 아키텍처에서 사용되며, 프로그램의 실행 흐름을 관리하는 중요한 역할을 한다.
-
 ## 2.1 Basecamp
 - 베이스캠프는 리버스 엔지니어들이 디버깅을 진행하면서 중간중간 코드에서 분석을 원하는 중요 포인트(주소)를 지정해 놓은 후 그 포인트로 빠르게 갈 수 있는 방법을 기록해 두는 방법이다.
 - 베이스캠프를 설치하는 4가지 방법으로는 **Goto 명령**, **BP 설치**, **주석**, **레이블** 등 이 있다.
@@ -188,6 +169,7 @@ int _tmain(int argc, TCHAR *argv[])
 {: .no_toc}
 > - 401007 주소의 PUSH 004092A0 명령어가 있는데, 이 명령어에서 참조되는 4092A0 주소에 있는 문자열의 확인을 위하여 OllyDbg의 덤프(Dump) 창에서 확인
 > - 유니코드(UniCode)로 된 "Hello World!" 문자열 확인
+> - 유니코드는 전 세계의 모든 문자를 일관되게 표현하고 처리할 수 있도록 설계된 문자 인코딩 표준
 > - ![](../../assets/images/reversing/HelloWorld/18.png) 
  
 ## 3.5 API 검색 방법 - 1
@@ -209,4 +191,122 @@ int _tmain(int argc, TCHAR *argv[])
 - USER32 모듈에서 Export type의 MessageBoxW 함수를 선택
 - ![](../../assets/images/reversing/HelloWorld/21.png) 
 
+<br>
 
+- 주소를 보면 Hello World.exe에서 사용되는 주소와 확연히 틀리다는 걸 알 수 있음.
+- 이곳에 BP를 설치[F2]하고, 실행[F9]
+- ![](../../assets/images/reversing/HelloWorld/22.png)
+
+<br>
+
+- 예상대로 MessageBoxW 코드 시작에 설치한 BP에서 실행이 멈춤
+- 레지스터(Register) 창의 ESP 값이 19FF1C인데, 이것은 스택의 주소
+- ![](../../assets/images/reversing/HelloWorld/23.png)
+
+{: .no_toc}
+> - ESP의 값 19FF1C에 있는 리턴 주소 401014는 HelloWorld.exe의 main 함수내의 MessageBoxW 함수 호출 바로 다음의 코드
+> - MessageBoxW() 함수의 RETN 명령어에 BP를 설치한 후 실행
+> - 도중에 메시지 박스가 나타나면 [확인]을 선택.
+> - 마지막으로 RETN 명령어에서 디버깅이 멈추면 StepInto[F7]/StepOut[F8] 며령으로 리턴 주소 401014로 갈 수 있음.
+
+---
+
+## 4.1 "Hello World!" 문자열 패치
+- 디버거를 이용해서 프로그램의 내용을 간단히 패치하는 실습
+- 디버깅을 재실행[Ctrl+F2]하고, main 함수 시작 주소(401000)까지 실행
+- ![](../../assets/images/reversing/HelloWorld/24.png)
+
+## 4.2 문자열 버퍼 직접 수정
+- MessageBoxW 함수의 전달인자 4092A0의 문자열("Hello World!") 버퍼를 직접 수정하는 방법
+- 덤프 창에서 Go to 명령[Ctrl+G]으로 4092A0 주소로 이동
+- 4092A0 주소를 마우스로 선택한 후 [Ctrl+E] 단축키로 Edit 다이얼로그를 띄움
+- ![](../../assets/images/reversing/HelloWorld/25.png)
+
+<br>
+
+- Edit 다이얼로그의 "유니코드" 항목에 "Hello Reversing" 문자열을 입력.
+- 유니코드 문자열은 2바이트 크기의 NULL로 끝나야 하는 규칙이 존재
+- ![](../../assets/images/reversing/HelloWorld/26.png)
+
+<br>
+
+- MessageBoxW() 함수에 전달되는 파라미터의 내용을 변경
+- [F9] 키를 눌러 실행시키면 패치된 문자열이 나타남
+- ![](../../assets/images/reversing/HelloWorld/27.png)
+
+{: .no_toc}
+> - 일반적으로 원본 문자열 뒤쪽에 어떤 의미 있는 데이터가 존재할 수 있기 때문에 원본 문자열이 길이를 넘어가는 문자열로 덮어쓰는 것은 위험
+
+## 4.3 다른 메모리 영역에 새로운 문자열을 생성하여 전달
+- 더 긴 문자열("Hello Rversing World!!!")로 패치
+- 401007 주소의 PUSH 004092A0 명령은 4092A0 주소의 "Hello World!" 문자열을 파라미터로 전달하고 있음
+- 이 문자열 주소를 변경해서 전달한다면, 메시지 박스에는 변경된 문자열이 출력됨
+- ![](../../assets/images/reversing/HelloWorld/28.png)
+
+<br>
+
+- dump 창에서 4092A0 주소 아래로 내리다 보면 NULL padding 영역이 존재
+- 프로그램에서 사용되지 않는 NULL padding 영역 확인
+- ![](../../assets/images/reversing/HelloWorld/29.png)
+
+{: .no_toc}
+> - 프로그램이 메모리에 로딩될 때 최소 기본 단위(보통 1000)가 있다. 비록 프로그램 내에서 메모리를 100 크기만큼  사용한다고 해도 실제로 메모리에 로딩될 때는 최소 기본 단위인 1000만큼의 크기가 잡힘
+
+<br>
+
+- NULL padding 공간을 문자열 버퍼로 사용해서 MessageBoxW 함수에 전달
+- 끝부분의 적당한 위치(409F50)에 패치 문자열("Hello Rversing World!!!") 삽입
+- ![](../../assets/images/reversing/HelloWorld/30.png)
+
+<br>
+
+- MessageBoxW() 함수에게 새로운 버퍼 주소(409F50)를 파라미터로 전달
+- Code 창에서 401007 주소 위치에 놓고 Assemble 명령(단축키 [Space])어 입력
+- 'PUSH 409F50' 명령어 입력
+- ![](../../assets/images/reversing/HelloWorld/31.png)
+
+<br>
+
+- 마지막으로 OllyDbg를 실행하면 'Hello Rversing World!!!' 출력
+
+---
+
+## 정리 - 디버거 동장 명령(Code Window에서 동작) 요약
+
+## OllyDbg 기초 사용 법
+
+| 명령어                   | 단축키                                      | 설명                                                                                         |
+|--------------------------|---------------------------------------------|----------------------------------------------------------------------------------------------|
+| Step Into                 | [F7]                                        | 하나의 OP Code 실행(CALL 명령을 만나면 그 함수 코드 내부로 따라 들어감)                      |
+| Step Over                 | [F8]                                        | 하나의 OP Code 실행(CALL 명령을 만나면 따라 들어가지 않고 그냥 함수 자체를 실행함)           |
+| Restart                   | Ctrl+[F2]                                   | 다시 처음부터 디버깅 시작(디버깅을 당하는 프로세스를 종료하고 재실행시킴)                    |
+| Go to                     | Ctrl+[G]                                    | 원하는 주소를 찾아감(코드를 확인할 때 사용, 실행되는 것은 아님)                             |
+| Run                       | [F9]                                        | 실행(BP가 걸려있으면 그곳에서 실행이 정지됨)                                                 |
+| Execute till return       | Ctrl+[F9]                                   | 함수 코드 내에서 RETN 명령어까지 실행(함수 탈출 목적)                                        |
+| Execute till cursor       | [F4]                                        | cursor 위치까지 실행함(디버깅하고 싶은 주소까지 바로 갈 수 있음)                             |
+| Comment                   | [;]                                         | Comment 추가                                                                                 |
+| User-defined label        | 마우스 메뉴 Search for-User-defined label   | 사용자가 입력한 Label 목록 보기                                                              |
+| Breakpoint                | [F2]                                        | BP(BreakPoint) 설정/해제                                                                     |
+| All referenced text strings| 마우스 메뉴 Search for-All referenced text strings| 코드에서 참조되는 문자열 보기                                                                 |
+| All intermodular calls    | 마우스 메뉴 Search for-All intermodular calls| 코드에서 호출되는 모든 API 함수 보기                                                          |
+| Name in all modules       | 마우스 메뉴 Search for-Name in all modules  | 모든 API 함수 보기                                                                           |
+| Edit data                 | Ctrl+[E]                                    | 데이터 편집                                                                                   |
+| Assemble                  | [Space]                                     | 어셈블리 코드 작성                                                                           |
+| Copy to executable file   | 마우스 메뉴 Copy to executable file         | 파일의 복사본 생성(변경 사항 반영됨)                                                         |
+
+## Assembly 기초 명령어
+
+| 명령어      | 설명                               |
+|-------------|------------------------------------|
+| CALL XXXX   | XXXX 주소의 함수를 호출            |
+| JMP XXXX    | XXXX 주소로 점프                   |
+| PUSH XXXX   | 스택에 XXXX 저장                  |
+| RETN        | 스택에 저장된 복귀 주소로 점프     |
+
+## 용어
+
+| 용어            | 설명                                           |
+|-----------------|------------------------------------------------|
+| VA(Virtual Address) | 프로세스의 가상 메모리                      |
+| OP code(OPeration code) | CPU 명령어(바이트 code)                |
+| PE(Portable Executable) | Windows 실행 파일(EXE, DLL, SYS 등)   |
