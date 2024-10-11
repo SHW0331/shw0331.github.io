@@ -118,7 +118,7 @@ IA-32(Intel Architecture 32비트) 설명
 - IA-32 보호 모드에서 세그먼트란 메모리를 조각내어 각 조각마다 시작 주소, 범위, 접근 권한 등을 부여해서 메모리를 보호하는 기법
 - 세그먼트는 페이징(Paging) 기법과 함께 가상 메모리를 실제 물리 메모리로 변경할 때 사용
 - 세그먼트 레지스터는 총 6개(CS, SS, DS, ES, FS, GS)이며 각각의 크기는 16비트(2바이트)이다.
-- ![](../../assets/images/reversing/Register/2.png)
+- ![](../../assets/images/reversing/Register/3.png)
 
 {: .no_toc}
 > - 세그먼트 레지스터가 가리키는 세그먼트 디스크립터(Segment Descriptor)와 가상 메모리가 조합되어 선형주소(Linear Address)가 되며, 페이징 기법에 의해서 선형 주소가 최종적으로 물리주소(Physical Address)로 변환
@@ -137,7 +137,30 @@ IA-32(Intel Architecture 32비트) 설명
 ---
 
 ## 3.1 프로그램 상태와 컨트롤 레지스터
-- 
+- 플래그(Flag) 레지스터의 이름은 EFLAGS이며 32비트(4바이트) 크기이다.
+- EFLAGS 레지스터는 각각의 비트마다 의미를 가지고 있는데, 각 비트는 1 또는 0 의 값을 가진다.
+- 이는 On/Off 혹은 True/False를 의미한다. 일부 비트는 시스템에서 직접 세팅학, 일부 비트는 프로그램에서 사용된 명령의 수행 결과에 따라 세팅된다.
+
+{: .no_toc}
+> - EFLAGS 레지스터의 32개의 각 비트 의미를 전부 이해한다는 것은 상당히 어려운 일
+> - 리버싱 입문 단계에서는 애플리케이션 디버깅에 필요한 3가지 flag(ZF, OF, CF)에 대해서만 이해하면 된다.
+
+- ![](../../assets/images/reversing/Register/4.png)
+
+<br>
+
+- Zero Flag(ZF) : 연산 명령 후에 결과 값이 0이 되면 ZF가 1(True)로 세팅
+- Overflow Flag(OF) : 부호 있는 수(signed integer)의 오버플로가 발생했을 때 1로 세팅, 그리고 MSB(Most Significant Bit)가 변경되었을 때 1로 세팅
+- Carry Flag(CF) : 부호 없는 수(unsigned integer)의 오버플로가 발생했을 때 1로 세팅
+
+---
+
+## 4.1 Instruction Pointer
+- EIP : Instruction Pointer
+- EIP는 CPU가 처리할 명령어의 주소를 나타내는 레지스터
+- 크기는 32비트(4바이트)이고, CPU는 EIP에 저장된 메모리 주소의 명령어를 하나 처리하고 난 후 자동으로 그 명령어 길이만큼 EIP를 증가시킴
+- 범용 레지스터들과는 다르게 EIP는 그 값을 직접 변경할 수 없도록 되어 있어서 다른 명령어를 통하여 간접적으로 변경
+- EIP를 변경하고 싶을 때는 특정 명령어(JMP, Jcc, CALL, RET)를 사용하거나 인터럽트(interrupt), 예외(exception)를 발생시켜야 한다.
 
 ---
 
