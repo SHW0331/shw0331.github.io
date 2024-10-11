@@ -19,6 +19,11 @@ Python, CVE, Splunk, Reversing, ...
 
 ---
 
+## Reversing
+Reversing 섹션에서는 **리버싱 핵심원리(이승원 지음)** 책을 참고하여 Reversing에 대해 학습한 내용을 공유합니다. 실습을 통해 배운 내용을 정리했습니다.
+
+---
+
 ## Python
 Python 섹션에서는 다양한 Python 프로그래밍 주제와 예제를 다룹니다. 실습을 통해 얻은 내용을 자세히 기록하였습니다.
 
@@ -36,11 +41,6 @@ CVE 섹션에서는 최신 보안 취약점 분석과 PoC (Proof of Concept) 환
 ## 주요 내용
 - CVE 분석 : 최신 CVE 분석 및 실습 결과 공유
 - PoC 환경 구성 : PoC 환경 설정 및 실습 과정 설명
-
----
-
-## Reversing
-Reversing 섹션에서는 **리버싱 핵심원리(이승원 지음)** 책을 참고하여 Reversing에 대해 학습한 내용을 공유합니다. 실습을 통해 배운 내용을 정리했습니다.
 
 ---
 
