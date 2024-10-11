@@ -62,6 +62,47 @@ IA-32(Intel Architecture 32비트) 설명
 - IA-32에서 각각의 범용 레지스터들의 크기는 32비트(4바이트)이다.
 - ![](../../assets/images/reversing/Register/2.png)
 
+{: .no_toc}
+> - 각 레지스터들은 16비트 하위 호환을 위하여 몇 개의 구획으로 나뉜다. (EAX를 기준으로 설명)
+> - EAX : (0 ~ 31) 32비트
+> - AX : (0 ~ 15) EAX의 하위 16비트
+> - AH : (8 ~ 15) AX의 상위 8비트
+> - AL : (0 ~ 7) AX의 하위 8비트
+> - 즉 4바이트(32비트)를 다 사용하고 싶을 때는 **EAX**를 사용하고, 2바이트(16비트)만을 사용할 때는 EAX의 하위 16비트 부부인 **AX**를 사용하면 된다.
+> - 이런식으로 상황에 맞게 8비트, 16비트, 32비트로 알뜰하게 사용
+
+<br>
+
+- 아래 4개의 레지스터들은 주로 산술연산(ADD, SUB, XOR, OR 등) 명령어에서 상수/변수 값의 저장 용도로 많이 사용
+- EAX : Accumulator for operands and results data
+- EBX : Pointer to data in the DS segment
+- ECX : Counter for string and loop operations
+- EDX : I/O pointer
+
+{: .no_toc}
+> - 추가적으로 ECX와 CAX는 특수한 용도로도 많이 사용
+> - ECX는 반복 명령문(LOOP)에서 반복 카운트(loop count)로 사용(루프를 돌 때마다 ECX를 1씩 감소시킴)
+> - EAX는 일반적으로 함수 리턴 값에 사용. 모든 Win32 API 함수들은 리턴 값을 EAX에 저장한 후 리턴
+
+<br>
+
+- 나머지 범용 레지스터들의 이름은 아래와 같고, 주로 메모리 주소를 저장하는 포인터로 사용
+- EBP : Pointer to data on the stack (in the SS sement)
+- ESI : source pointer for string operations
+- EDI : destination pointer for string operations
+- ESP : Stack pointer (in the SS segment)
+
+{: .no_toc}
+> - ESP는 스택 메모리 주소를 가리킴
+> - EBP는 함수가 호출되었을 때 그 순간의 ESP를 저장하고 있다가, 함수가 리턴하기 직전에 다시 ESP에 값을 되돌려줘서 스택이 깨지지 않도록 함(Stack Frame 기법)
+> - ESI와 EDI는 특정 명령어들(LODS, STOS, REP MOVS 등)과 함께 주로 메모리 복사에 사용
+> - LODS: 메모리에서 데이터를 가져와 레지스터로 저장.
+> - STOS: 레지스터에 있는 데이터를 메모리로 저장.
+> - REP MOVS: 소스 메모리에서 목적지 메모리로 다수의 데이터를 반복적으로 복사.
+
+
+## 1.5 범용 레지스터 요약
+
 | 레지스터  | 설명                                                                 |
 |-----------|----------------------------------------------------------------------|
 | **EAX**   | 주로 산술 연산의 결과를 저장하는 **누산기(accumulator)**로 사용 |
@@ -71,14 +112,32 @@ IA-32(Intel Architecture 32비트) 설명
 | **ESI/EDI** | 문자열 연산이나 메모리 주소 계산에 자주 사용                     |
 | **EBP/ESP** | 스택 포인터와 관련된 작업을 처리. 함수 호출 시 스택에 데이터를 저장하고, 스택의 최상단을 추적하는 데 사용. |
 
+---
+
+## 2.1 세그먼트 레지스터
+- IA-32 보호 모드에서 세그먼트란 메모리를 조각내어 각 조각마다 시작 주소, 범위, 접근 권한 등을 부여해서 메모리를 보호하는 기법
+- 세그먼트는 페이징(Paging) 기법과 함께 가상 메모리를 실제 물리 메모리로 변경할 때 사용
+- 세그먼트 레지스터는 총 6개(CS, SS, DS, ES, FS, GS)이며 각각의 크기는 16비트(2바이트)이다.
+- ![](../../assets/images/reversing/Register/2.png)
+
 {: .no_toc}
-> - 각 레지스터들은 16비트 하위 호환을 위하여 몇 개의 구획으로 나뉜다. (EAX를 기준으로 설명)
-> - EAX : (0 ~ 31) 32비트
-> - AX : (0 ~ 15) EAX의 하위 16비트
-> - AH : (8 ~ 15) AX의 상위 8비트
-> - AL : (0 ~ 7) AX의 하위 8비트
-> - 즉 4바이트(32비트)를 다 사용하고 싶을 때는 **EAX**를 사용하고, 2바이트(16비트)만을 사용할 때는 EAX의 하위 16비트 부부인 **AX**를 사용하면 된다.
-> - 이런식으로 상황에 맞게 8비트, 16비트, 32비트로 알뜰하게 사용
+> - 세그먼트 레지스터가 가리키는 세그먼트 디스크립터(Segment Descriptor)와 가상 메모리가 조합되어 선형주소(Linear Address)가 되며, 페이징 기법에 의해서 선형 주소가 최종적으로 물리주소(Physical Address)로 변환
+> - **페이징 기법**은 운영체제에서 가상 메모리와 물리적 메모리를 효율적으로 관리하기 위한 메모리 관리 기법
+
+<br>
+
+- 각 세그먼트 레지스터의 이름은 아래와 같다.
+- CS : Code Segment
+- SS : Stack Segment
+- DS : Data Segment
+- ES : Extra(Data) Segment
+- FS : Data Segment
+- GS : Data Segment
+
+---
+
+## 3.1 프로그램 상태와 컨트롤 레지스터
+- 
 
 ---
 
