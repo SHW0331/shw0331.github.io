@@ -9,7 +9,7 @@ parent: reversing
 # 리틀 엔디언 표기법
 {: .no_toc}
 
-컴퓨터에서 메모리에 데이터를 저장하는 방식을 의미하는 바이트 오더링(Byte Ordering)의 리틀 엔디언 표기법과 빅 엔디언 표기법에 대해 실습
+바이트 오더링(Byte Ordering) 실습
 {: .fs-6 .fw-300 }
 
 ---
