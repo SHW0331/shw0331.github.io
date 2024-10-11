@@ -7,8 +7,15 @@ parent: reversing
 ---
 
 # Hello World! 리버싱
+{: .no_toc}
+
 "Hello World!" 프로그램을 디버깅
 {: .fs-6 .fw-300 }
+
+---
+
+1. TOC
+{:toc}
 
 ---
 
