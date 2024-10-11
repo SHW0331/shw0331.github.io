@@ -2,6 +2,7 @@
 layout: default
 title: Hello World!
 nav_order: 1
+category: "basic"
 parent: reversing
 ---
 
