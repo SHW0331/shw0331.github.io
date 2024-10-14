@@ -14,9 +14,9 @@ has_children: true
 ## 설명
 {: .no_toc}
 
-[Dreanhack][dreamhack]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
-- 이 페이지는 리버스 엔지니어링 이론에 대해 학습하고 정리한 내용입니다. 
-
+- [Dreanhack][dreamhack]{: .btn .fs-5 .mb-4 .mb-md-0 target="_blank"}
+- 본 문서는 리버스 엔지니어링 관련 워게임 문제를 직접 해결한 후, 도출한 해답과 실제 정답 간의 차이를 비교 분석한 내용 
+- 이를 통해 해결 과정의 문제점과 개선 사항을 체계적으로 정리
 
 ---
 
