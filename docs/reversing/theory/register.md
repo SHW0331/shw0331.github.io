@@ -54,13 +54,13 @@ IA-32(Intel Architecture 32비트) 설명
 - Segment Registers (16비트 - 6개)
 - Program Status and Control Register (32비트 - 1개)
 - Instruction Pointer (32비트 - 1개)
-- ![](../../assets/images/reversing/Register/1.png)
+- ![](../../../assets/images/reversing/Register/1.png)
 
 ## 1.4 범용 레지스터
 - 범용 레지스터(General Purpose Registers)는 여러 종류의 데이터 처리를 위한 다목적 저장 공간
 - 주로 산술 연산이나 논리 연산을 수행하는 데 사용되며, 각종 데이터를 임시로 저장
 - IA-32에서 각각의 범용 레지스터들의 크기는 32비트(4바이트)이다.
-- ![](../../assets/images/reversing/Register/2.png)
+- ![](../../../assets/images/reversing/Register/2.png)
 
 {: .no_toc}
 > - 각 레지스터들은 16비트 하위 호환을 위하여 몇 개의 구획으로 나뉜다. (EAX를 기준으로 설명)
@@ -118,7 +118,7 @@ IA-32(Intel Architecture 32비트) 설명
 - IA-32 보호 모드에서 세그먼트란 메모리를 조각내어 각 조각마다 시작 주소, 범위, 접근 권한 등을 부여해서 메모리를 보호하는 기법
 - 세그먼트는 페이징(Paging) 기법과 함께 가상 메모리를 실제 물리 메모리로 변경할 때 사용
 - 세그먼트 레지스터는 총 6개(CS, SS, DS, ES, FS, GS)이며 각각의 크기는 16비트(2바이트)이다.
-- ![](../../assets/images/reversing/Register/3.png)
+- ![](../../../assets/images/reversing/Register/3.png)
 
 {: .no_toc}
 > - 세그먼트 레지스터가 가리키는 세그먼트 디스크립터(Segment Descriptor)와 가상 메모리가 조합되어 선형주소(Linear Address)가 되며, 페이징 기법에 의해서 선형 주소가 최종적으로 물리주소(Physical Address)로 변환
@@ -145,7 +145,7 @@ IA-32(Intel Architecture 32비트) 설명
 > - EFLAGS 레지스터의 32개의 각 비트 의미를 전부 이해한다는 것은 상당히 어려운 일
 > - 리버싱 입문 단계에서는 애플리케이션 디버깅에 필요한 3가지 flag(ZF, OF, CF)에 대해서만 이해하면 된다.
 
-- ![](../../assets/images/reversing/Register/4.png)
+- ![](../../../assets/images/reversing/Register/4.png)
 
 <br>
 

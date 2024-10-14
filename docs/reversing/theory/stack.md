@@ -54,7 +54,7 @@ IA-32(Intel Architecture 32비트) 설명
 - Segment Registers (16비트 - 6개)
 - Program Status and Control Register (32비트 - 1개)
 - Instruction Pointer (32비트 - 1개)
-- ![](../../assets/images/reversing/Register/1.png)
+- ![](../../../assets/images/reversing/Register/1.png)
 
 
 ---

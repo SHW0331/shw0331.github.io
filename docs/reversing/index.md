@@ -9,8 +9,9 @@ permalink: /docs/reversing
 # Reversing
 {: .no_toc}
 
-본 문서는 리버스 엔지니어링 이론과 실습을 기반으로 작성되었습니다
+본 문서는 Dreamhack 워게임 문제를 기반으로 작성되었으며, 이를 통해 도출된 분석과 해결 과정을 정리하였습니다.
 {: .fs-6 .fw-300 }
+
 ---
 
 ## 기초 리버싱
@@ -28,3 +29,5 @@ permalink: /docs/reversing
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
   {% endfor %}
 </ul>
+
+---

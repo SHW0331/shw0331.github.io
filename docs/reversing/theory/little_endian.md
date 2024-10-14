@@ -35,7 +35,7 @@ parent: Theory
 
 ## 1.2 빅 엔디언과 리틀 엔디언의 차이점
 - 총 4개의 (크기가 다른) 자료형이 존재
-- ![](../../assets/images/reversing/LittleEndian/1.png)
+- ![](../../../assets/images/reversing/LittleEndian/1.png)
 
 <br>
 
@@ -78,19 +78,19 @@ parent: Theory
 
 ## 1.5 OllyDbg에서 리틀 엔디언 확인
 - 아래 코드를 빌드하여 LittleEndian.exe를 생성한 후 OllyDbg로 디버깅
-- ![](../../assets/images/reversing/LittleEndian/2.png)
+- ![](../../../assets/images/reversing/LittleEndian/2.png)
 
 <br>
 
 - Go to 명령[Ctrl+G]으로 401000 주소로 이동
 - main() 함수의 주소는 401000이고, 전역 변수들의 주소는 404AC40(b), 40AC44(w), 40AC48(dw), 40AC4C(str) 이다.
-- ![](../../assets/images/reversing/LittleEndian/3.png)
+- ![](../../../assets/images/reversing/LittleEndian/3.png)
 
 <br>
 
 - OllyDbg의 데이터 창에서 Go to 명령을 통해 40AC40 주소로 이동
 - 변수 w와 dw 값들이 리틀 엔디언 형식으로 저장된 것을 확인
-- ![](../../assets/images/reversing/LittleEndian/4.png)
+- ![](../../../assets/images/reversing/LittleEndian/4.png)
 
 ---
 

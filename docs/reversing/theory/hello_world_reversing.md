@@ -31,7 +31,7 @@ parent: Theory
 - 소스코드는 Windows API를 사용하여 "Hello World!"가 담긴 MessageBox 출력
 - HelloWorld.cpp 빌드 후, 실행 파일(HelloWorld.exe) 생성
 
-![](../../assets/images/reversing/HelloWorld/1.png)
+![](../../../assets/images/reversing/HelloWorld/1.png)
 
 ```cpp
 #include "windows.h"
@@ -51,17 +51,17 @@ int _tmain(int argc, TCHAR *argv[])
 ## 1.1 HelloWorld.exe 디버깅 
 - HelloWorld.exe 파일을 OllyDbg(32bit)로 열기
 
-{: .note-title }
+{: .no_toc}
 > **OllyDbg**는 Windows 환경에서 동작하는 **디버거(Debugger)**로, 주로 어셈블리 언어 수준에서 프로그램의 실행을 분석하는 데 사용
 > [OllyDbg](https://www.ollydbg.de/)
 
 - 디버거가 멈춘 곳은 EP(EntryPoint) 코드로, HelloWorld.exe의 실행 시작 주소
 - 시작 주소는 **4011A0**, CALL, JMP 명령어가 존재
 
-{: .note-title }
+{: .no_toc}
 > **JMP**는 무조건적인 점프 명령어로, 프로그램의 흐름을 지정된 위치로 이동, **CALL**은 특정 함수를 호출하는 명령어
 
-![](../../assets/images/reversing/HelloWorld/2.png)
+![](../../../assets/images/reversing/HelloWorld/2.png)
 
 ## 1.2 프로그램 구성 요소
 - EP : Windows 실행 파일(EXE, DLL, SYS 등)의 코드 시작점
@@ -70,7 +70,7 @@ int _tmain(int argc, TCHAR *argv[])
 - Disassembled code(**CALL HelloWor.0040270C**) : OP Code를 보기 쉽게 어셈블리로 변환한 코드
 - comment : 디버거에서 추가한 주석
 
-{: .note-title }
+{: .no_toc}
 > **EP**란 , 프로그램이 실행될때 CPU에 의해 가장 먼저 실행되는 코드 시작 위치
 
 ---
@@ -80,25 +80,25 @@ int _tmain(int argc, TCHAR *argv[])
 - **401056** 주소의 CALL 402524 함수 호출 명령어 확인
 - 명령어 실행 후, 함수 내부 확인
 
-![](../../assets/images/reversing/HelloWorld/3.png)
+![](../../../assets/images/reversing/HelloWorld/3.png)
 
 
 ## 1.4 Win32 API 호출 코드
 - F7,F8 명령으로 디버깅을 진행하면, **4010E4** 주소 확인
 - **CALL <JMP.&KERNEL32.GetCommandLineW>** 명령어는 Win32 API 호출 코드
 
-![](../../assets/images/reversing/HelloWorld/4.png)
+![](../../../assets/images/reversing/HelloWorld/4.png)
 
 ## 1.4 어셈블리 언어로 변환 된 main() 함수 찾기
 - 계속 디버깅을 진행하면, **401144** 주소 확인 후 명령어 실행해서 함수 내부 확인
 
-![](../../assets/images/reversing/HelloWorld/5.png)
+![](../../../assets/images/reversing/HelloWorld/5.png)
 
 - MessageBoXW() API 호출하는 코드 확인
 - 그 API의 파라미터가 "www.reverse.core.com"과 "Hello World!" 문자열
 - HelloWorld.cpp의 소스코드와 일치하기 때문에 **401000** 함수가 바로 main() 함수
 
-![](../../assets/images/reversing/HelloWorld/6.png)
+![](../../../assets/images/reversing/HelloWorld/6.png)
 
 ---
 
@@ -110,40 +110,40 @@ int _tmain(int argc, TCHAR *argv[])
 - **HelloWorld.exe**를 디버깅하고, 40104F 주소를 베이스캠프로 설정
 - Go to[Ctrl+G] 다이얼로그에 40104F 주소 입력
 
-![](../../assets/images/reversing/HelloWorld/7.png)
+![](../../../assets/images/reversing/HelloWorld/7.png)
 
 ## 2.3 BP 설치
 - 베이스캠프로 가는 또 다른 방법은 BP(Break Point)를 설치[F2], 하고 실행[F9]하는 것이다.
 - 디버거는 현재 실행 위치에서부터 프로세스를 실행하다가 BP가 걸린 곳에서 멈추게 된다.
 
-![](../../assets/images/reversing/HelloWorld/8.png)
+![](../../../assets/images/reversing/HelloWorld/8.png)
 
 {: .no_toc}
 > - 메인 메뉴의 View - Breakpoints를 선택(단축키 [ALT+B])하면, BreakPoints 목록이 나타남.
-> - ![](../../assets/images/reversing/HelloWorld/9.png)
+> - ![](../../../assets/images/reversing/HelloWorld/9.png)
 
 ## 2.4 주석
 - [;] 단축키로 주석(Comment)을 달고, 주석을 찾아 가는 방법
 
-![](../../assets/images/reversing/HelloWorld/10.png)
+![](../../../assets/images/reversing/HelloWorld/10.png)
 
 {: .no_toc}
 > - 마우스 우측 메뉴의 Search for-User-defined comment 항목을 선택하면, 사용자가 입력한 주석들이 표시가 됨
-> - ![](../../assets/images/reversing/HelloWorld/11.png)
+> - ![](../../../assets/images/reversing/HelloWorld/11.png)
 
 ## 2.5 레이블
 - 레이블(Lable)은 원하는 주소에 특정 이름을 붙여주는 기능
 - 40104F 주소에 커서를 위치시킨 후 단축키 [:]를 이용해 레이블을 입력
 
-![](../../assets/images/reversing/HelloWorld/12.png)
+![](../../../assets/images/reversing/HelloWorld/12.png)
 
 {: .no_toc}
 > - 4011A5 주소에 40104F 주소를 해당 레이블로 표시
-> - ![](../../assets/images/reversing/HelloWorld/13.png)
+> - ![](../../../assets/images/reversing/HelloWorld/13.png)
 > <br>
 > - 레이블도 주석과 마찬가지로 검색이 가능
 > - 마우스 우측 메뉴의 'Search for - User defined labels' (Initial CPU selection이라고 표시된 부분은 현재 커서 위치를 나타냄)
-> - ![](../../assets/images/reversing/HelloWorld/14.png)
+> - ![](../../../assets/images/reversing/HelloWorld/14.png)
 
 ---
 
@@ -161,55 +161,55 @@ int _tmain(int argc, TCHAR *argv[])
 - 베이스캠프(40104F)에서부터 명령어를 한 줄씩 실행[F8]한다.
 - 몇 번 반복해보면 특정 함수를 호출한 이후에 메시지 박스가 나타나는 것을 파악할 수 있음
 - 바로 그 함수가 main() 함수이다.
-- ![](../../assets/images/reversing/HelloWorld/15.png)
+- ![](../../../assets/images/reversing/HelloWorld/15.png)
 
 {: .no_toc}
 > - 40114 주소에 있는 CALL 00401000 명령어에서 호출하는 함수 주소(401000)로 가보면(Step Into[F7]), main() 함수의 코드 영역
 > - 401002와 401007 주소의 PUSH 명령어는 메시지 박스에 표시될 문자열을 스택(Stack)에 저장하여 MessageBoxW() 함수에 파라미터로 전달
-> - ![](../../assets/images/reversing/HelloWorld/16.png) 
+> - ![](../../../assets/images/reversing/HelloWorld/16.png) 
 
 ## 3.4 문자열 검색 방법
 - OllyDbg가 디버깅할 프로그램을 처음 로딩할 때 사전 분석 과정을 거침.
 - 프로세스 메모리를 훑어서 참조되는 문자열과 호출되는 API들을 뽑아내서 따로 목록으로 정리
 - 마우스 우측 메뉴 - Search for - All referenced text strings
-- ![](../../assets/images/reversing/HelloWorld/17.png) 
+- ![](../../../assets/images/reversing/HelloWorld/17.png) 
 
 {: .no_toc}
 > - 401007 주소의 PUSH 004092A0 명령어가 있는데, 이 명령어에서 참조되는 4092A0 주소에 있는 문자열의 확인을 위하여 OllyDbg의 덤프(Dump) 창에서 확인
 > - 유니코드(UniCode)로 된 "Hello World!" 문자열 확인
 > - 유니코드는 전 세계의 모든 문자를 일관되게 표현하고 처리할 수 있도록 설계된 문자 인코딩 표준
-> - ![](../../assets/images/reversing/HelloWorld/18.png) 
+> - ![](../../../assets/images/reversing/HelloWorld/18.png) 
  
 ## 3.5 API 검색 방법 - 1
 - Windows 프로그래밍에서 모니터 화면에 뭔가를 출력하려면 Win32 API를 사용하여 OS에게 화면 출력을 요청해야 함.
 - 따라서 프로그램의 기능을 보고 사용되었을 법한 Win32 API 호출을 예상하여, 그 부분을 찾을 수 있다면, 디버깅이 매우 간편
 - 코드에에서 사용된 API 호출 목록만 보고 싶을 때는 **All intermodular calls** 명령을 사용.
-- ![](../../assets/images/reversing/HelloWorld/19.png) 
+- ![](../../../assets/images/reversing/HelloWorld/19.png) 
 
 ## 3.6 API 검색 방법 - 2
 - Packer/Protector를 사용하여 실행 파일을 압축(또는 보호)해버리면, 파일 구조가 변경되어 OllyDbg에서 API 호출 목록이 보이지 않는다.
 - 이런 경우에는 프로세스 메모리에 로딩된 라이브러리에 직접 BP를 걸어 보는 것이다.
 - 실제로 API는 C:\Windows\system32 폴더에 *.dll 파일 내부에 구현되어 있다.
 - View - Memory 메뉴를 선택 (단축키 [Alt+M])
-- ![](../../assets/images/reversing/HelloWorld/20.png) 
+- ![](../../../assets/images/reversing/HelloWorld/20.png) 
 
 <br>
 
 - **Name in all modules** 명령을 사용하고, 나타나는 창에서 **Name** 으로 정렬시키고, **MessageBoxW**를 타이핑
 - USER32 모듈에서 Export type의 MessageBoxW 함수를 선택
-- ![](../../assets/images/reversing/HelloWorld/21.png) 
+- ![](../../../assets/images/reversing/HelloWorld/21.png) 
 
 <br>
 
 - 주소를 보면 Hello World.exe에서 사용되는 주소와 확연히 틀리다는 걸 알 수 있음.
 - 이곳에 BP를 설치[F2]하고, 실행[F9]
-- ![](../../assets/images/reversing/HelloWorld/22.png)
+- ![](../../../assets/images/reversing/HelloWorld/22.png)
 
 <br>
 
 - 예상대로 MessageBoxW 코드 시작에 설치한 BP에서 실행이 멈춤
 - 레지스터(Register) 창의 ESP 값이 19FF1C인데, 이것은 스택의 주소
-- ![](../../assets/images/reversing/HelloWorld/23.png)
+- ![](../../../assets/images/reversing/HelloWorld/23.png)
 
 {: .no_toc}
 > - ESP의 값 19FF1C에 있는 리턴 주소 401014는 HelloWorld.exe의 main 함수내의 MessageBoxW 함수 호출 바로 다음의 코드
@@ -222,25 +222,25 @@ int _tmain(int argc, TCHAR *argv[])
 ## 4.1 "Hello World!" 문자열 패치
 - 디버거를 이용해서 프로그램의 내용을 간단히 패치하는 실습
 - 디버깅을 재실행[Ctrl+F2]하고, main 함수 시작 주소(401000)까지 실행
-- ![](../../assets/images/reversing/HelloWorld/24.png)
+- ![](../../../assets/images/reversing/HelloWorld/24.png)
 
 ## 4.2 문자열 버퍼 직접 수정
 - MessageBoxW 함수의 전달인자 4092A0의 문자열("Hello World!") 버퍼를 직접 수정하는 방법
 - 덤프 창에서 Go to 명령[Ctrl+G]으로 4092A0 주소로 이동
 - 4092A0 주소를 마우스로 선택한 후 [Ctrl+E] 단축키로 Edit 다이얼로그를 띄움
-- ![](../../assets/images/reversing/HelloWorld/25.png)
+- ![](../../../assets/images/reversing/HelloWorld/25.png)
 
 <br>
 
 - Edit 다이얼로그의 "유니코드" 항목에 "Hello Reversing" 문자열을 입력.
 - 유니코드 문자열은 2바이트 크기의 NULL로 끝나야 하는 규칙이 존재
-- ![](../../assets/images/reversing/HelloWorld/26.png)
+- ![](../../../assets/images/reversing/HelloWorld/26.png)
 
 <br>
 
 - MessageBoxW() 함수에 전달되는 파라미터의 내용을 변경
 - [F9] 키를 눌러 실행시키면 패치된 문자열이 나타남
-- ![](../../assets/images/reversing/HelloWorld/27.png)
+- ![](../../../assets/images/reversing/HelloWorld/27.png)
 
 {: .no_toc}
 > - 일반적으로 원본 문자열 뒤쪽에 어떤 의미 있는 데이터가 존재할 수 있기 때문에 원본 문자열이 길이를 넘어가는 문자열로 덮어쓰는 것은 위험
@@ -249,13 +249,13 @@ int _tmain(int argc, TCHAR *argv[])
 - 더 긴 문자열("Hello Rversing World!!!")로 패치
 - 401007 주소의 PUSH 004092A0 명령은 4092A0 주소의 "Hello World!" 문자열을 파라미터로 전달하고 있음
 - 이 문자열 주소를 변경해서 전달한다면, 메시지 박스에는 변경된 문자열이 출력됨
-- ![](../../assets/images/reversing/HelloWorld/28.png)
+- ![](../../../assets/images/reversing/HelloWorld/28.png)
 
 <br>
 
 - dump 창에서 4092A0 주소 아래로 내리다 보면 NULL padding 영역이 존재
 - 프로그램에서 사용되지 않는 NULL padding 영역 확인
-- ![](../../assets/images/reversing/HelloWorld/29.png)
+- ![](../../../assets/images/reversing/HelloWorld/29.png)
 
 {: .no_toc}
 > - 프로그램이 메모리에 로딩될 때 최소 기본 단위(보통 1000)가 있다. 비록 프로그램 내에서 메모리를 100 크기만큼  사용한다고 해도 실제로 메모리에 로딩될 때는 최소 기본 단위인 1000만큼의 크기가 잡힘
@@ -264,14 +264,14 @@ int _tmain(int argc, TCHAR *argv[])
 
 - NULL padding 공간을 문자열 버퍼로 사용해서 MessageBoxW 함수에 전달
 - 끝부분의 적당한 위치(409F50)에 패치 문자열("Hello Rversing World!!!") 삽입
-- ![](../../assets/images/reversing/HelloWorld/30.png)
+- ![](../../../assets/images/reversing/HelloWorld/30.png)
 
 <br>
 
 - MessageBoxW() 함수에게 새로운 버퍼 주소(409F50)를 파라미터로 전달
 - Code 창에서 401007 주소 위치에 놓고 Assemble 명령(단축키 [Space])어 입력
 - 'PUSH 409F50' 명령어 입력
-- ![](../../assets/images/reversing/HelloWorld/31.png)
+- ![](../../../assets/images/reversing/HelloWorld/31.png)
 
 <br>
 

@@ -17,7 +17,6 @@ has_children: true
 {: .no_toc}
 
 - 이 페이지는 리버스 엔지니어링 이론에 대해 학습하고 정리한 내용입니다. 
-- 주요 개념과 원리를 깊이 있게 설명하며, 이해를 돕기 위한 체계적인 학습 자료로 구성되었습니다.
 
 ---
 
@@ -28,3 +27,5 @@ has_children: true
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
   {% endfor %}
 </ul>
+
+---

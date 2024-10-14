@@ -13,14 +13,6 @@ has_children: true
 
 ---
 
-## 기초 리버싱
-{% assign basic_docs = site.pages | where: "category", "basic" | sort: "title" %}
-<ul>
-  {% for doc in basic_docs %}
-    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
-  {% endfor %}
-</ul>
-
 ## 워게임 (reversing)
 {% assign wargame_docs = site.pages | where: "category", "wargame" | sort: "title" %}
 <ul>
