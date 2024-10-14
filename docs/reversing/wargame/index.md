@@ -1,6 +1,6 @@
 ---
 title: wargame
-nav_order: 1
+nav_order: 2
 parent: reversing
 has_children: true
 ---
