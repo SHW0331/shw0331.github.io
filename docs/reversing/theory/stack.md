@@ -3,7 +3,7 @@ layout: default
 title: Stack
 nav_order: 3
 category: "basic"
-parent: reversing
+parent: Theory
 ---
 
 # Stack 기본 설명

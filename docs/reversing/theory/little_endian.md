@@ -3,7 +3,7 @@ layout: default
 title: Little Endian
 nav_order: 2
 category: "basic"
-parent: reversing
+parent: Theory
 ---
 
 # 리틀 엔디언 표기법

@@ -3,7 +3,7 @@ layout: default
 title: Hello World!
 nav_order: 1
 category: "basic"
-parent: reversing
+parent: Theory
 ---
 
 # Hello World! 리버싱

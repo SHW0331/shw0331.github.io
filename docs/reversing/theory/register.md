@@ -3,7 +3,7 @@ layout: default
 title: Register
 nav_order: 3
 category: "basic"
-parent: reversing
+parent: Theory
 ---
 
 # IA-32 Register 기본 설명
