@@ -81,7 +81,21 @@ ExitProcess()
 ## 4.1 스택에 파라미터를 전달하는 방법
 - 401000 ~ 40100E 주소 사이의 명령어를 확인
 - MessageBoxA() 함수를 호출하기 전에 4번의 PUSH 명령어를 사용하여 필요한 파라미터를 역순으로 입력
+- ![](../../../assets/images/reversing/abex'%20crackme#1/5.png)
 
+<br>
+
+- 스택 메모리 구조는 FILO(First In Last Out)
+- 따라서 실제 C 언어 소스코드에서 함수에 넘기는 파라미터의 순서가 어셈블리 언어에서는 역순으로 진행
+- 주소가 작아지는 방향으로 진행 
+- 스택에 값을 입력하면 ESP 값은 작아짐
+
+```c
+MessageBox(NULL, "Make me think your HD is a CD-Rom.", "abex' 1st crackme", MB_OK|MB_APPLMODAL);
+```
+
+{: .no_toc}
+> - CMP는 SUB 명령어와 동일하나 operand 값이 변경되지 않고 EFLAGS 레지스터만 변경됨 (**두 operand의 값이 동일하다면 SUB 결과는 0이고 ZF = 1로 세팅**)
 
 ---
 
