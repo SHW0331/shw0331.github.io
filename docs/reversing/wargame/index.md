@@ -5,7 +5,7 @@ parent: reversing
 has_children: true
 ---
 
-# Reversing
+# Reversing - Wargame
 {: .no_toc}
 
 본 문서는 reversing 문제를 기반으로 작성되었습니다.
