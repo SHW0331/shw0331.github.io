@@ -74,10 +74,20 @@ int main(int argc, char* argv[])
 
 <br>
 
-- 먼저 main() 함수 시작 시 스택의 상태는 
+- 먼저 main() 함수(401020)에 BP를 설치한 후, 실행
+- main() 함수 시작 시 스택의 상태는 ESP = 19FF2C, EBP = 19FF2C
+- 특히 ESP에 저장된 값 401250은 main() 함수의 실행이 끝난 후 돌아갈 리턴 주소
+- ![](../../../assets/images/reversing/StackFrame/2.PNG)
 
-- main() 함수(401020)에 BP를 설치한 후, 실행
-- 
+<br>
+
+- **00401020 PUSH EBP ; # main()**
+- main() 함수는 시작하자마자 스택 프레임을 생성
+- main() 함수에서 EBP가 베이스 포인터의 역할을 하게 될 테니 EBP가 이전에 가지고 있던 값을 스택에 백업해두기 위한 용도로 사용
+- 나중에 main() 함수가 종료(리턴)되기 전에 이 값을 복구
+
+- **00401021 MOV EBP, ESP**
+- ESP의 값을 EBP로 이동, 즉 이 명령 이후부터 EBP는 현재 ESP와 같은 값을 가짐
 
 
 
