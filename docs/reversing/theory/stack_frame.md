@@ -39,6 +39,7 @@ parent: Theory
 ## 2.1 실습 예제 - stackframe.exe
 - 스택 프레임의 설명을 위해 아주 간단한 프로그램을 만들어 실습
 - StackFrame.cpp
+
 ```cpp
 #include "stdio.h"
 
@@ -67,6 +68,7 @@ int main(int argc, char* argv[])
 
 ## 2.2 main() 함수 시작 & 스택 프레임 생성
 - StackFrame.cpp에서 아래 코드 부분에 해당되는 내용
+
 ```cpp
 int main(int argc, char* argv[])
 {
