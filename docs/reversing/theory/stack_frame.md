@@ -79,7 +79,7 @@ int main(int argc, char* argv[])
 - 먼저 main() 함수(401020)에 BP를 설치한 후, 실행
 - main() 함수 시작 시 스택의 상태는 ESP = 19FF2C, EBP = 19FF70
 - 특히 ESP에 저장된 값 401250은 main() 함수의 실행이 끝난 후 돌아갈 리턴 주소
-- ![](../../../assets/images/reversing/StackFrame/2.PNG)
+- ![](../../../assets/images/reversing/StackFrame/2.png)
 
 <br>
 
@@ -95,11 +95,11 @@ int main(int argc, char* argv[])
 - **401020, 401021** 주소의 두 명령어에 의해서 main() 함수에 대한 스택 프레임이 생성 (EBP가 세팅되었다고 말함)
 
 - 여기까지 실행 후 스택의 상태 확인, OllyDbg의 스택 창을 선택한 후 마우스 우측 메뉴에서 Address - Relative to EBP 를 선택
-- ![](../../../assets/images/reversing/StackFrame/3.PNG)
+- ![](../../../assets/images/reversing/StackFrame/3.png)
 
 - EBP 값은 19FF28으로 ESP와 동일하고, 19FF28 주소에는 19FF70 이라는 값이 저장되어 있음
 - 19FF70은 main() 함수 시작할 때 EBP가 가지고 있던 초기 값
-- ![](../../../assets/images/reversing/StackFrame/4.PNG)
+- ![](../../../assets/images/reversing/StackFrame/4.png)
 
 ## 2.3 로컬 변수 세팅
 
