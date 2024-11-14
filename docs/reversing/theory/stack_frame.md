@@ -88,14 +88,20 @@ int main(int argc, char* argv[])
 - main() 함수에서 EBP가 베이스 포인터의 역할을 하게 될 테니 EBP가 이전에 가지고 있던 값을 스택에 백업해두기 위한 용도로 사용
 - 나중에 main() 함수가 종료(리턴)되기 전에 이 값을 복구
 
+<br>
+
 - **00401021 MOV EBP, ESP**
 - ESP의 값을 EBP로 이동, 즉 이 명령 이후부터 EBP는 현재 ESP와 같은 값을 가짐
 - main() 함수 끝날 때까지는 EBP 값은 고정
 - 스택에 저장된 함수 파라미터와 로컬 변수들은 EBP를 통해 접근(Access)하겠다는 의미를 가짐
 - **401020, 401021** 주소의 두 명령어에 의해서 main() 함수에 대한 스택 프레임이 생성 (EBP가 세팅되었다고 말함)
 
+<br>
+
 - 여기까지 실행 후 스택의 상태 확인, OllyDbg의 스택 창을 선택한 후 마우스 우측 메뉴에서 Address - Relative to EBP 를 선택
 - ![](../../../assets/images/reversing/StackFrame/3.png)
+
+<br>
 
 - EBP 값은 19FF28으로 ESP와 동일하고, 19FF28 주소에는 19FF70 이라는 값이 저장되어 있음
 - 19FF70은 main() 함수 시작할 때 EBP가 가지고 있던 초기 값
