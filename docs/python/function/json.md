@@ -2,7 +2,7 @@
 layout: default
 title: json
 category: "bulit-in"
-parent: Function
+parent: function
 nav_order: 5
 ---
 

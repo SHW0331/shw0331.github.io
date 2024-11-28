@@ -1,5 +1,5 @@
 ---
-title: Function
+title: function
 nav_order: 1
 parent: python
 has_children: true

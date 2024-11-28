@@ -2,7 +2,7 @@
 layout: default
 title: input
 category: "bulit-in"
-parent: Function
+parent: function
 nav_order: 2
 ---
 
