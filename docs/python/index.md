@@ -1,13 +1,13 @@
 ---
 layout: default
 title: python
-nav_order: 4
+nav_order: 3
 has_children: true
 permalink: /docs/python
 ---
 
 # Python
-본 문서는 python 공식 문서를 참고하여 작성되었습니다.
+본 문서는 Python 이론과 실습을 기반으로 작성되었습니다.
 {: .fs-6 .fw-300 }
 
 - Python Version : 3.10.11

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: splunk
-nav_order: 5
+nav_order: 999
 has_children: true
 permalink: /docs/splunk
 ---

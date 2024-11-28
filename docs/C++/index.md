@@ -1,16 +1,16 @@
 ---
 layout: default
 title: c++
-nav_order: 3
+nav_order: 2
 has_children: true
 permalink: /docs/c++
 ---
 
 # C++
-본 문서는 C++ 공식 문서를 참고하여 작성되었습니다.
-{: .fs-6 .fw-300 }
+{: .no_toc}
 
-- C++ Standard Version : -
+본 문서는 C++ 이론과 실습을 기반으로 작성되었습니다.
+{: .fs-6 .fw-300 }
 
 ---
 
