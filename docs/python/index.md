@@ -1,7 +1,7 @@
 ---
 layout: default
 title: python
-nav_order: 2
+nav_order: 4
 has_children: true
 permalink: /docs/python
 ---
@@ -24,7 +24,7 @@ permalink: /docs/python
 
 ---
 
-## Etc..
+## Framework
 {% assign etc_docs = site.pages | where: "category", "etc" | sort: "title" %}
 <ul>
   {% for doc in etc_docs %}
