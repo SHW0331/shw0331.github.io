@@ -1,7 +1,7 @@
 ---
 layout: default
 title: requests
-parent: python
+parent: Function
 nav_order: 6
 ---
 

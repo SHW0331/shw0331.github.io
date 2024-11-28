@@ -1,7 +1,7 @@
 ---
 layout: default
 title: json
-parent: python
+parent: Function
 nav_order: 5
 ---
 

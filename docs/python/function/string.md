@@ -2,7 +2,7 @@
 layout: default
 title: string
 category: "bulit-in"
-parent: python
+parent: Function
 nav_order: 4
 ---
 
