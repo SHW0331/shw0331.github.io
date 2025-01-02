@@ -14,7 +14,7 @@ permalink: /docs/c++
 
 ---
 
-## functions
+## Project
 {% assign built_in_docs = site.pages | where: "category", "std-lib" | sort: "title" %}
 <ul>
   {% for doc in built_in_docs %}
