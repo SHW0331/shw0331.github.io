@@ -19,19 +19,16 @@ Python, CVE, Splunk, Reversing, ...
 
 ---
 
-## Reversing
-Reversing 섹션에서는 **리버싱 핵심원리(이승원 지음)** 책을 참고하여 Reversing에 대해 학습한 내용을 공유합니다. 실습을 통해 배운 내용을 정리했습니다.
+## C++, Unreal
+Unreal Engine과 C++을 활용해 실시간 렌더링과 물리 기반 시뮬레이션을 구현한 프로젝트를 공유합니다.
 
 ---
 
 ## Python
-Python 섹션에서는 다양한 Python 프로그래밍 주제와 예제를 다룹니다. 실습을 통해 얻은 내용을 자세히 기록하였습니다.
+Python 섹션에서는 다양한 프로젝트 상세 내용에 대해 공유합니다.
 
 ### 주요 내용
-- Python 기초 : 변수, 데이터 타입, 제어 구조
-- Python 모듈 : requests, json..등 유용한 모듈 활용법
-- Python 예제 : 웹 스크래핑, 데이터 분석, 자동화 스크립트
-- Flask 개발 : Steam api 를 이용한 Steam Dashboard
+- Flask 개발 : NVD, Github API를 이용한 Flask WEB 개발
 
 ---
 
@@ -44,8 +41,13 @@ CVE 섹션에서는 최신 보안 취약점 분석과 PoC (Proof of Concept) 환
 
 ---
 
+## Reversing
+Reversing 섹션에서는 Reversing 실습을 통해 배운 내용을 정리했습니다.
+
+---
+
 ## Splunk
-Splunk 섹션에서는 Splunk의 강력한 데이터 분석 및 시각화 기능을 활용하는 방법을 설명합니다. 실습을 통해 배운 내용을 정리했습니다.
+Splunk 섹션에서는 Splunk의 강력한 데이터 분석 및 시각화 기능을 활용하는 방법을 설명합니다.
 
 ### 주요 내용
 - Splunk 기본 설정 : 설치, 설정, 데이터 입력
