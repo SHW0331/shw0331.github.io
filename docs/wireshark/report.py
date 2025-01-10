@@ -235,7 +235,7 @@ def pcap_tl(ip_proto): # Transport Layer
             "icmp.resp_out" # 요청에 대한 응답 패킷
         ]
 
-        for field in tcp_list:
+        for field in icmp_list:
             tshark_cmd = [
                 "tshark",
                 "-r", pcap_file,
@@ -288,12 +288,37 @@ def pcap_tl(ip_proto): # Transport Layer
         return pcap_data
     
     elif ip_proto == "UDP":
+        udp_list = [
+            "udp.srcport",      # 
+            "udp.dstport",      # 
+            "udp.length",       # 
+            "udp.checksum"      # 
+        ]
         a=3
     elif ip_proto == "IPv6":
+        ipv6_list = [
+            "ipv6.src",                #      
+            "ipv6.dst",                #      
+            "ipv6.traffic_class",      #                
+            "ipv6.flow_label",         #             
+            "ipv6.payload_length",     #                 
+            "ipv6.next_header"         #             
+        ]
         a=4
     elif ip_proto == "GRE":
+        gre_list = [
+            "gre.flags",            # 
+            "gre.version",          # 
+            "gre.protocol"          # 
+        ]
         a=5
     elif ip_proto == "ESP":
+        esp_list = [
+            "esp.spi",
+            "esp.sequence",
+            "esp.payload",
+            "esp.auth_data"
+        ]
         a=6
     elif ip_proto == "AH":
         a=7

