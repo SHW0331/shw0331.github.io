@@ -1,7 +1,7 @@
 ---
 layout: default
 title: algorithm
-nav_order: 997
+nav_order: 4
 has_children: true
 permalink: /docs/algorithm
 ---

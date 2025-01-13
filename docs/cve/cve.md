@@ -1,7 +1,7 @@
 ---
 layout: default
 title: cve
-nav_order: 998
+nav_order: 1
 has_children: true
 permalink: /docs/cve
 ---
