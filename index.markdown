@@ -19,30 +19,12 @@ Python, CVE, Splunk, Reversing, ...
 
 ---
 
-## C++, Unreal
-Unreal Engine과 C++을 활용해 실시간 렌더링과 물리 기반 시뮬레이션을 구현한 프로젝트를 공유합니다.
-
----
-
-## Python
-Python 섹션에서는 다양한 프로젝트 상세 내용에 대해 공유합니다.
-
-### 주요 내용
-- Flask 개발 : NVD, Github API를 이용한 Flask WEB 개발
-
----
-
 ## CVE
 CVE 섹션에서는 최신 보안 취약점 분석과 PoC (Proof of Concept) 환경 구현을 통해 학습한 내용을 공유합니다.
 
 ## 주요 내용
 - CVE 분석 : 최신 CVE 분석 및 실습 결과 공유
 - PoC 환경 구성 : PoC 환경 설정 및 실습 과정 설명
-
----
-
-## Reversing
-Reversing 섹션에서는 Reversing 실습을 통해 배운 내용을 정리했습니다.
 
 ---
 
@@ -55,5 +37,10 @@ Splunk 섹션에서는 Splunk의 강력한 데이터 분석 및 시각화 기능
 - 대시보드 및 시각화 : 보고서 생성, 시각화 도구 사용
 
 --- 
+
+## Reversing
+Reversing 섹션에서는 Reversing 실습을 통해 배운 내용을 정리했습니다.
+
+---
 
 [Github]: https://github.com/SHW0331
