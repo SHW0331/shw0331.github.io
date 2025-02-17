@@ -23,13 +23,3 @@ permalink: /docs/reversing
 </ul>
 
 ---
-
-## 워게임 (reversing)
-{% assign wargame_docs = site.pages | where: "category", "wargame" | sort: "title" %}
-<ul>
-  {% for doc in wargame_docs %}
-    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
-  {% endfor %}
-</ul>
-
----
