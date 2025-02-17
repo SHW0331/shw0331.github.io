@@ -1,5 +1,5 @@
 ---
-title: reversing 
+title: reversing-hacking 
 nav_order: 2
 parent: hacking
 has_children: true
