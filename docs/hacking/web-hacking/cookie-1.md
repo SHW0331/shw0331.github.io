@@ -45,7 +45,7 @@ Webhacking Wargame - Cookie 1
 
 ## 2.1 웹사이트 접속
 - 해당 문제의 웹사이트 접속
-- link : http://host1.dreamhack.games:18643/
+- link : http://host1.dreamhack.games:22261/
 
 - ![](../../../assets/images/webhacking/cookie/cookie-1/1.png)
 
