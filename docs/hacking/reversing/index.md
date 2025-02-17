@@ -3,7 +3,7 @@ title: reversing
 nav_order: 2
 parent: hacking
 has_children: true
-category: reversing
+category: reversing-hacking
 permalink: /docs/hacking/reversing
 ---
 
@@ -23,7 +23,7 @@ permalink: /docs/hacking/reversing
 ---
 
 ## reversing wargame
-{% assign wargame_docs = site.pages | where: "category", "reversing" | sort: "title" %}
+{% assign wargame_docs = site.pages | where: "category", "reversing-wargame" | sort: "title" %}
 <ul>
   {% for doc in wargame_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
