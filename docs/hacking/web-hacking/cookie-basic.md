@@ -33,15 +33,24 @@ Cookie Basic Wargane
 
 ---
 
-## 1.1 문제 해결 전략 
-- Cookie 값 확인 : `session`, `auth`, `user` 등의 이름을 가진 Cookie 값을 확인
-- Cookie 값 조작 : 
+## 1.1 문제 해결 전략 - Cookie
+- Cookie Manipulation : Base64로 인코딩된 값을 디코딩/변조, JWT 토큰 조작 하는 전략
+- Cookie Theft : XSS 공격으로 document.cookie를 이용해 Cookie를 탈취하는 전략
+- Session Hijacking : 쿠키 값이 고정되어 있어서 다른 사용자의 세션을 가로채는 전략
 
 ---
 
-## 2.1 프로그램 파일 실행
-- 
-- ![](../../../assets/images/wargame/1/0.png)
+## 2.1 웹사이트 접속
+- 해당 문제의 웹사이트 접속
+- link : http://host1.dreamhack.games:18643/
+
+- ![](../../../assets/images/webhacking/cookie/cookie-1/1.png)
+
+## 2.2 웹사이트 HTML 요소 분석
+- 개발자 도구(Elements 패널) 활용하여 HTML 코드 분석
+- default 계정이 guest / guest 임을 확인
+
+- ![](../../../assets/images/webhacking/cookie/cookie-1/2.png)
 
 ---
 
