@@ -21,7 +21,7 @@ has_children: true
 ---
 
 ## Web Hacking
-{% assign basic_docs = site.pages | where: "category", "basic" | sort: "title" %}
+{% assign basic_docs = site.pages | where: "category", "Cookie" | sort: "title" %}
 <ul>
   {% for doc in basic_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
