@@ -14,12 +14,23 @@ permalink: /docs/hacking
 
 ---
 
-## 워게임
-{% assign wargame_docs = site.pages | where: "category", "wargame" | sort: "title" %}
+## webhacking wargame
+{% assign webhacking_docs = site.pages | where: "category", "web-hacking" | sort: "title" %}
 <ul>
-  {% for doc in wargame_docs %}
+  {% for doc in webhacking_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
   {% endfor %}
 </ul>
 
 ---
+
+## reversing wargame
+{% assign reversing_docs = site.pages | where: "category", "reversing" | sort: "title" %}
+<ul>
+  {% for doc in reversing_docs %}
+    <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+  {% endfor %}
+</ul>
+
+---
+

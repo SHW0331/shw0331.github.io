@@ -3,6 +3,8 @@ title: web-hacking
 nav_order: 1
 parent: hacking
 has_children: true
+category: web-hacking
+permalink: /docs/hacking/web-hacking
 ---
 
 # Web Hacking 
@@ -20,7 +22,7 @@ has_children: true
 
 ---
 
-## Web Hacking
+## Web Hacking - Cookie
 {% assign basic_docs = site.pages | where: "category", "Cookie" | sort: "title" %}
 <ul>
   {% for doc in basic_docs %}

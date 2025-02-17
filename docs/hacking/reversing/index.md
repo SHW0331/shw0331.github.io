@@ -1,8 +1,10 @@
 ---
-title: wargame
+title: reversing 
 nav_order: 2
-parent: reversing
+parent: hacking
 has_children: true
+category: reversing
+permalink: /docs/hacking/reversing
 ---
 
 # Reversing - Wargame
@@ -20,8 +22,8 @@ has_children: true
 
 ---
 
-## 워게임 (reversing)
-{% assign wargame_docs = site.pages | where: "category", "wargame" | sort: "title" %}
+## reversing wargame
+{% assign wargame_docs = site.pages | where: "category", "reversing" | sort: "title" %}
 <ul>
   {% for doc in wargame_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
