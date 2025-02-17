@@ -25,7 +25,7 @@ permalink: /docs/hacking
 ---
 
 ## reversing wargame
-{% assign reversing_docs = site.pages | where: "category", "reversing" | sort: "title" %}
+{% assign reversing_docs = site.pages | where: "category", "reversing-hacking" | sort: "title" %}
 <ul>
   {% for doc in reversing_docs %}
     <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
